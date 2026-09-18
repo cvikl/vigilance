@@ -1,0 +1,108 @@
+# Clinician phrasings of each breach reason (S2 design §6). One (criterion, reason) → ≥3 variants.
+# Every variant is a complete sentence; S2 embeds it verbatim and validates presence.
+H1:
+  swab_delay:
+    - "Swab not taken until the following morning as no swabbing kit was available on the ward overnight."
+    - "Initial swab attempt unsuccessful; repeat sample obtained the next day."
+    - "Delay in obtaining nasopharyngeal swab as the swabbing team did not attend until the afternoon."
+  lab_backlog:
+    - "Result delayed by laboratory backlog; sample queued for over 24 hours before processing."
+    - "Microbiology reported a processing backlog so the PCR result was not available until the next day."
+    - "Lab confirmed the sample was received but not run until the following day due to reagent shortage."
+  result_not_actioned:
+    - "Positive result was available on the system but not reviewed or documented until the next ward round."
+    - "Result phoned to the ward overnight but not actioned until the day team reviewed the notes."
+    - "PCR result sat in the results inbox unacknowledged for most of a day."
+  other:
+    - "Sample mislabelled and rejected by the laboratory; repeat swab required."
+    - "Patient transferred between hospitals before the result was chased."
+    - "Analyser fault in the laboratory delayed all PCR results that day."
+H2:
+  bed_unavailable:
+    - "No medical bed available; patient boarded in ED awaiting ward allocation."
+    - "Remained in the ED corridor for several hours as there were no isolation beds on the wards."
+    - "Bed manager unable to identify a side room; admission delayed until a bed became free."
+  referral_not_received:
+    - "Medical referral was not received by the on-call team and had to be re-sent."
+    - "Referral made to the medical SHO but no record of it being received; re-referred later in the shift."
+    - "Bleep to the medical registrar went unanswered and the referral was not picked up until handover."
+  patient_declined:
+    - "Patient initially declined admission and wished to go home; agreed to stay after discussion with family."
+    - "Patient reluctant to be admitted, citing caring responsibilities; admitted after a prolonged discussion."
+    - "Declined admission on first assessment and re-presented later the same day for admission."
+  transport_delay:
+    - "Ambulance transfer from the community assessment unit delayed by several hours."
+    - "Portering delay in transferring the patient from ED to the ward."
+    - "Transfer delayed as the ambulance service had no vehicle available for a suspected COVID patient."
+  other:
+    - "Patient required stabilisation of hypotension in resus before a ward bed could be considered."
+    - "Awaiting a chest radiograph report before the admission decision was made."
+    - "Senior review delayed by a simultaneous cardiac arrest call in the department."
+H3:
+  icu_full:
+    - "ICU at full capacity; patient managed on the ward with CPAP until a critical care bed became available."
+    - "No ITU bed available on site; discussed with the regional network for a bed elsewhere."
+    - "Critical care unable to accept as all beds were occupied by ventilated COVID patients."
+  escalation_delayed:
+    - "Deterioration noted overnight but escalation to the outreach team was not made until the morning."
+    - "NEWS2 of 8 recorded but critical care review requested only after the consultant ward round."
+    - "Escalation delayed pending a discussion about the ceiling of care with the family."
+  news2_not_recorded:
+    - "Observations not recorded for over six hours overnight so the deterioration was not identified."
+    - "NEWS2 score not completed on the observation chart; trigger for escalation was missed."
+    - "Observation frequency reduced in error; no NEWS2 documented between the evening and morning rounds."
+  other:
+    - "Patient initially declined escalation to critical care; agreed after discussion with next of kin."
+    - "Transfer to ICU delayed by the need for a negative-pressure bay to be cleaned."
+    - "Awaiting anaesthetic review as the on-call anaesthetist was in theatre."
+H4:
+  not_prescribed:
+    - "VTE prophylaxis not prescribed on admission; omission noted at the ward round the next day."
+    - "Enoxaparin omitted from the admission drug chart in error; prescribed on the post-take ward round."
+    - "VTE risk assessment completed but no prophylaxis prescribed until the pharmacist flagged it."
+  prescription_unsigned:
+    - "Enoxaparin prescribed but the prescription was unsigned so the nursing staff could not administer it."
+    - "Drug chart entry for enoxaparin lacked a prescriber signature; first dose given after it was re-written."
+    - "Prophylactic dose written up but not signed; nursing staff bleeped the doctor the following morning."
+  contraindication_documented:
+    - "Enoxaparin withheld pending platelet count as thrombocytopenia was documented on admission bloods."
+    - "Prophylaxis initially withheld due to a documented history of gastrointestinal bleeding; started after senior review."
+    - "Held while renal function was clarified; started once eGFR was confirmed above threshold."
+  drug_shortage:
+    - "Enoxaparin out of stock on the ward; first dose given once pharmacy delivered supply the next day."
+    - "Ward stock of enoxaparin exhausted; dose delayed until the emergency drug cupboard was restocked."
+    - "Pharmacy reported a supply shortage of enoxaparin 40 mg syringes; dose given after stock arrived."
+  other:
+    - "First dose delayed as the patient was off the ward for a CT scan when the drug round took place."
+    - "Dose omitted overnight as the patient was asleep and the nurse did not wake them."
+    - "Patient initially refused the injection; accepted after explanation the next morning."
+H5:
+  ventilator_unavailable:
+    - "No ventilator available on the unit; patient maintained on CPAP until a machine was freed."
+    - "Intubation delayed as all ventilators were in use; equipment sourced from theatres."
+    - "Ventilator required servicing before use; intubation deferred until a replacement was available."
+  decision_delayed:
+    - "Decision to intubate deferred pending a trial of awake proning and high-flow nasal oxygen."
+    - "Intubation decision delayed while the ceiling of treatment was discussed with the family."
+    - "Consultant review of the need for invasive ventilation delayed until the morning round."
+  other:
+    - "Intubation delayed by a difficult airway assessment requiring a second anaesthetist."
+    - "Patient transiently improved on non-invasive ventilation before deteriorating again."
+    - "Delay while awaiting a repeat arterial blood gas to confirm the trend."
+H6:
+  not_booked:
+    - "Follow-up clinic appointment was not booked at discharge; arranged after the GP queried it."
+    - "No post-COVID clinic referral was made on discharge; booked when the omission was noticed."
+    - "Discharge summary requested follow-up but the referral was never sent to the clinic."
+  dna:
+    - "Patient did not attend the first follow-up appointment; a further appointment was offered."
+    - "Did not attend the post-discharge clinic; rebooked after a telephone call from the secretary."
+    - "First follow-up appointment missed by the patient; seen at the rescheduled appointment."
+  lost_to_follow_up:
+    - "Patient could not be contacted after discharge; letters returned as the address was incorrect."
+    - "Lost to follow-up after discharge; re-engaged when the patient contacted the clinic themselves."
+    - "No response to two appointment letters; follow-up arranged once the GP provided an updated telephone number."
+  other:
+    - "Clinic cancelled due to staff sickness; patient seen at the next available slot."
+    - "Follow-up deferred at the patient's request while they were self-isolating."
+    - "Appointment delayed by a backlog in the respiratory clinic."

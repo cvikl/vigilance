@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigilance — clinical audit that stays on</title>
+<meta name="description" content="vigilance turns a clinician's audit question into a verifiable audit of pathway handoffs. Models read the notes, clinicians review with click-to-source evidence, and the reported rate carries a valid confidence interval.">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#24262B; --ink-2:#585D6B; --muted:#8A8F9C; --line:#E6E8EC; --ground:#E9EAF1; --steel:#7FA3C4; --steel-ink:#4F7699; --red:#D9645B; --mint:#DCEFE7; --sky:#DCE8F3; --r:24px; --pill:999px; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:"Outfit", system-ui, sans-serif; font-size:17px; line-height:1.6; color:var(--ink); background:
+    radial-gradient(800px 520px at 8% 12%, rgba(169,196,218,.55), transparent 60%),
+    radial-gradient(700px 480px at 92% 88%, rgba(200,214,236,.55), transparent 60%),
+    radial-gradient(600px 420px at 70% 20%, rgba(221,242,233,.5), transparent 60%), var(--ground); -webkit-font-smoothing:antialiased; }
+  a { color:var(--steel-ink); text-decoration:none; } a:hover { text-decoration:underline; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+  header { display:flex; align-items:center; justify-content:space-between; padding:28px 0; }
+  .brand { display:flex; align-items:center; gap:10px; font-size:22px; font-weight:500; letter-spacing:-.02em; }
+  .brand .mark { width:26px; height:26px; border-radius:8px; background:var(--ink); position:relative; }
+  .brand .mark::after { content:""; position:absolute; inset:8px; border-radius:50%; background:#fff; }
+  nav a { margin-left:22px; color:var(--ink-2); font-size:15px; font-weight:500; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:var(--pill); background:var(--ink); color:#fff !important; font-weight:600; font-size:15px; }
+  .btn:hover { background:#000; text-decoration:none; }
+  .btn.ghost { background:#fff; color:var(--ink) !important; border:1px solid var(--line); }
+  .hero { padding:56px 0 40px; display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+  h1 { font-size:52px; line-height:1.08; letter-spacing:-.03em; font-weight:600; margin:0 0 20px; }
+  h1 em { font-style:normal; color:var(--steel-ink); }
+  .lede { font-size:20px; color:var(--ink-2); margin:0 0 28px; max-width:34em; }
+  .cta { display:flex; gap:12px; flex-wrap:wrap; }
+  .shot { background:#fff; border-radius:var(--r); padding:14px; box-shadow:0 20px 60px rgba(36,38,43,.10); }
+  .shot img { width:100%; display:block; border-radius:14px; }
+  section { padding:40px 0; }
+  h2 { font-size:30px; letter-spacing:-.02em; font-weight:600; margin:0 0 10px; }
+  .sub { color:var(--ink-2); margin:0 0 28px; max-width:40em; }
+  .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; }
+  .card { background:#fff; border-radius:var(--r); padding:26px 28px; }
+  .card h3 { margin:0 0 8px; font-size:18px; font-weight:600; }
+  .card p { margin:0; color:var(--ink-2); font-size:15.5px; }
+  .card.tint-mint { background:var(--mint); } .card.tint-sky { background:var(--sky); }
+  .num { font-size:44px; font-weight:600; letter-spacing:-.03em; line-height:1; margin:0 0 6px; }
+  .num small { font-size:16px; font-weight:500; color:var(--muted); letter-spacing:0; margin-left:6px; }
+  .steps { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; }
+  .step { background:#fff; border-radius:18px; padding:20px 22px; }
+  .step b { display:block; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .step span { font-size:15.5px; color:var(--ink-2); }
+  .step strong { display:block; font-size:16px; margin-bottom:4px; }
+  .rule { border:0; border-top:1px solid rgba(36,38,43,.10); margin:0; }
+  .quote { background:var(--ink); color:#fff; border-radius:var(--r); padding:40px 44px; display:grid; grid-template-columns:1fr auto; gap:32px; align-items:center; }
+  .quote p { margin:0; font-size:22px; line-height:1.4; font-weight:500; max-width:28em; }
+  .quote small { display:block; color:rgba(255,255,255,.65); margin-top:8px; font-size:14px; font-weight:400; }
+  footer { padding:36px 0 48px; color:var(--muted); font-size:14px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  @media (max-width: 900px) { .hero { grid-template-columns:1fr; padding-top:24px; } h1 { font-size:38px; } .grid, .steps { grid-template-columns:1fr; } .quote { grid-template-columns:1fr; padding:28px; } nav a { margin-left:14px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><span class="mark" aria-hidden="true"></span>vigi<b>lance</b></div>
+  <nav><a href="#problem">Problem</a><a href="#how">How it works</a><a href="#trust">Why trust it</a><a class="btn" href="/queue">Open the workbench</a></nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>The clinical audit <em>that stays on.</em></h1>
+    <p class="lede">Patient pathways lose time and people at the handoffs. vigilance reads the records, shows a clinician where each patient stalled and why, and reports a number the trust can sign.</p>
+    <div class="cta"><a class="btn" href="/queue">Open the workbench</a><a class="btn ghost" href="/results">See the results</a></div>
+  </div>
+  <div class="shot"><img src="/static/landing-shot.png" alt="The review queue: stalled patients ranked with the reason printed on every row"></div>
+</section>
+
+<section id="problem">
+  <h2>Nobody has time to read every note</h2>
+  <p class="sub">Clinical audit is how the NHS finds where pathways break. It is statutory, it works, and it stops the moment a ward gets busy, because the data collection is a clinician reading notes by hand.</p>
+  <div class="grid">
+    <div class="card"><p class="num">8<small>min 35 s</small></p><p>to abstract one discharge summary by hand.</p></div>
+    <div class="card"><p class="num">28<small>hours</small></p><p>per audit project, mostly unpaid time.</p></div>
+    <div class="card tint-sky"><p class="num">2020</p><p>National audit was switched off by letter when the pathways were breaking fastest.</p></div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <p class="sub">The clinician writes the audit as a protocol: which handoffs, what target, which reasons count as legitimate, who owns the fix. Everything downstream reads from it.</p>
+  <div class="steps">
+    <div class="step"><b>1 · Read</b><strong>MedGemma reads the pages</strong><span>Typed, scanned or handwritten. The 4B vision model transcribes every page with word positions.</span></div>
+    <div class="step"><b>2 · Point</b><strong>The model quotes, the code counts</strong><span>MedGemma 27B returns three verbatim quotes per case: start, end, reason. Code checks each quote on the page and computes the hours itself.</span></div>
+    <div class="step"><b>3 · Review</b><strong>One row per patient</strong><span>The clinician sees the quote highlighted on the real page, confirms or overrides in a minute, and the queue prints why each row is next.</span></div>
+    <div class="step"><b>4 · Report</b><strong>A number you can sign</strong><span>Reviews correct the rate for the cases nobody checked. Alerts name an action and an owner. The report drops into the audit the trust already owes.</span></div>
+  </div>
+</section>
+
+<section id="trust">
+  <h2>Why you can trust the number</h2>
+  <p class="sub">Nothing is invented, nothing is hidden, and the model never has the last word.</p>
+  <div class="grid">
+    <div class="card tint-mint"><h3>Nothing invented</h3><p>A quote the verifier cannot find on the page gets a red badge and no rectangle. A missing time is an abstain, never a guess.</p></div>
+    <div class="card"><h3>Stalled, not just late</h3><p>Every breach carries a reason with a class. An unsigned chart is a stalled patient. Platelets at 38 is a legitimate wait. Only the first counts as time lost.</p></div>
+    <div class="card"><h3>Honest intervals</h3><p>Prediction-powered inference keeps the confidence interval valid whatever fraction of rows the clinician managed. Where the model is biased, the model-only interval misses the truth every time; corrected, it holds.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="quote">
+    <p>It orders the team's checking, never a patient's care. This is audit, not surveillance.<small>Aggregate outputs only. No per-patient alert, no recommendation, no patient interaction.</small></p>
+    <a class="btn ghost" href="/report">Read the audit report</a>
+  </div>
+</section>
+
+<hr class="rule">
+<footer>
+  <span>vigilance · built at the Adeline Health x AI Hackathon, London, 18 September 2026, with Google MedGemma.</span>
+  <span>Synthetic cohort: Synthea COVID-19. Notes authored by a non-Google model. No real patient data.</span>
+</footer>
+</div>
+</body>
+</html>

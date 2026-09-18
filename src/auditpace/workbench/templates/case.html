@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}case {{ c.case_id }}{% endblock %}
+{% block content %}
+<header class="case-head">
+  <a id="back-to-queue" href="{{ '/queue'|demo_href(demo) }}">← Back to queue <span class="muted">Esc</span></a>
+  <div class="title">
+    <h1>{{ c.criterion.id }} {{ c.criterion.name }}</h1>
+    <p class="muted">{{ c.criterion.standard }}</p>
+  </div>
+  <dl class="facts">
+    <div><dt>Patient</dt><dd>{{ c.patient_id[:8] }} · {{ c.age_band }} · {{ c.sex }}</dd></div>
+    <div><dt>Organisation</dt><dd>{{ (c.organization_id or '—')[:8] }}</dd></div>
+    <div><dt>Documents</dt><dd>{{ c.documents|length }} <span class="muted">· evidence in {{ c.evidence|map(attribute='doc_type')|reject('none')|unique|join(', ')|replace('_', ' ') or 'none' }}</span></dd></div>
+    <div><dt>Target</dt><dd>{{ c.target_hours|hours_short }}</dd></div>
+  </dl>
+</header>
+<div class="case">
+<section class="doc">
+  <div class="docbar">
+    <nav class="docs" aria-label="documents">
+      <span class="count">{{ c.documents|length }} document{{ 's' if c.documents|length != 1 }}</span>
+      {% for d in c.documents %}{% for pg in d.pages %}
+      <button type="button" class="doctab{% if page and pg.page_id == page.page_id %} on{% endif %}" data-page="{{ pg.page_id }}"
+              hx-get="/case/{{ c.case_id }}/doc/{{ pg.page_id }}" hx-target="#pageview"
+              title="{{ (d.doc_type or d.doc_id)|replace('_', ' ') }}{% if d.authored_ts %}, {{ d.authored_ts.strftime('%d/%m/%Y') if d.authored_ts.strftime is defined else d.authored_ts }}{% endif %}">
+        {{ (d.doc_type or d.doc_id)|replace('_', ' ') }}{% if d.pages|length > 1 %} <span class="muted">p{{ pg.page_no }}</span>{% endif %}{% if pg.has_evidence %}<span class="ev" title="evidence quoted from this page"></span>{% endif %}
+      </button>
+      {% endfor %}{% endfor %}
+    </nav>
+    <button type="button" id="expand-page" class="expand" aria-pressed="false" title="Open the page in a big view"><span class="open">Expand</span><span class="close">Close <span class="muted">Esc</span></span></button>
+  </div>
+  <div id="pageview">{% include "partials/page_view.html" %}</div>
+</section>
+<section class="info">
+  <div class="block verdict {{ c.category or '' }}">
+    <h2>Verdict <span class="muted">computed from the quoted times</span></h2>
+    <p class="verdict-line"><span class="status">{{ c.status|replace('_', ' ') }}</span>
+      {% if c.category %}<span class="chip {{ c.category }}" {% if c.category in ['abstain', 'abstain_no_end'] %}data-demo="C1"{% endif %}>{{ c.category|category_label(c.criterion.id) }}</span>{% endif %}
+    </p>
+    <dl class="facts">
+      <div><dt>Documented</dt><dd>{{ c.hours|hours_short }}</dd></div>
+      <div><dt>Target</dt><dd>{{ c.target_hours|hours_short }}</dd></div>
+      {% if c.reason_tag %}<div><dt>Reason</dt><dd>{{ c.reason_tag|reason_label }} <span class="muted">· {{ c.reason_class|class_label }}</span></dd></div>{% endif %}
+      {% if c.computed_status_differs %}<div><dt>Model said</dt><dd>{{ c.model_status|replace('_', ' ') }} <span class="muted">· not used</span></dd></div>{% endif %}
+    </dl>
+  </div>
+
+  <div class="block">
+    <h2>Next step <span class="muted">from the protocol, not the model</span></h2>
+    <dl class="facts owner" data-demo="C3">
+      <div><dt>Owner</dt><dd>{{ c.owner }}</dd></div>
+      <div><dt>Action</dt><dd>{{ c.action }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="block">
+  <h2>Evidence <span class="muted">verbatim quotes, located on the page</span></h2>
+  <ol class="evidence">
+  {% for e in c.evidence %}
+    <li>
+      <span class="muted">{{ e.kind|replace('_', ' ') }} · {{ (e.doc_type or e.doc_id)|replace('_', ' ') }}{% if e.page_no %}, page {{ e.page_no }}{% endif %}</span>
+      <q>{{ e.quote }}</q>
+      {% if e.verified %}
+        <a href="#" hx-get="/case/{{ c.case_id }}/page/{{ e.page_id }}?evidence={{ e.idx }}" hx-target="#pageview">show on page</a>
+      {% else %}
+        <span class="badge unverified" data-demo="C1">not found on page — no rectangle</span>
+        {% if e.page_id %}<a href="#" hx-get="/case/{{ c.case_id }}/page/{{ e.page_id }}?evidence={{ e.idx }}" hx-target="#pageview">open page</a>{% endif %}
+      {% endif %}
+    </li>
+  {% else %}<li class="muted">no evidence quoted</li>{% endfor %}
+  </ol>
+  </div>
+
+  <h2>Your review</h2>
+  <div id="review-panel">{% include "partials/review_panel.html" %}</div>
+
+  <details class="sub"><summary>Details — timing, why this row, the model's reading</summary><div class="body">
+    <table class="summary">
+      <tr><th>{{ c.criterion.from_|replace('_', ' ') }} (documented)</th><td>{{ c.start_ts or 'not documented' }}</td></tr>
+      <tr><th>{{ c.criterion.to|replace('_', ' ') }} (documented)</th><td>{{ c.end_ts or 'not documented' }}</td></tr>
+      <tr><th>measured (from quoted times)</th><td>{{ c.hours|hours_short }} / target {{ c.target_hours|hours_short }}</td></tr>
+      <tr><th>standard</th><td>{{ c.criterion.standard }}</td></tr>
+    </table>
+    {% if c.priority_reason %}<p><b>Why this row</b></p><ul class="flags">{% for f in c.priority_reason|why_flags %}<li>{{ f.text }}</li>{% endfor %}</ul><p class="muted">flags: {{ c.priority_reason }}</p>{% endif %}
+    <p><b>Model's reading</b>{% if c.computed_status_differs %} <span class="differs">model call ≠ computed status (model said {{ c.model_status|replace('_', ' ') }})</span>{% endif %}</p>
+    {% if c.rationale %}<p class="muted">{{ c.rationale }}</p>{% endif %}
+    {% if c.confidence is not none %}<p class="muted">confidence {{ '%.2f'|format(c.confidence) }}</p>{% endif %}
+    <p class="muted">The model only points at the text; hours and status are computed from the quoted times. Owner and action come from the protocol, not the model.</p>
+  </div></details>
+</section>
+</div>
+<script src="/static/case.js"></script>
+{% endblock %}

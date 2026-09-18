@@ -1,0 +1,14 @@
+paths:
+  synthea_dir: data/synthea/100k_synthea_covid19_csv
+  processed_dir: data/processed
+  fixtures_dir: tests/fixtures/mini
+models:
+  adjudicator: {base_url: "http://localhost:8003/v1", model: "google/medgemma-27b-text-it"}
+  reader:      {base_url: "http://localhost:8002/v1", model: "google/medgemma-1.5-4b-it"}
+  designer:    {base_url: "http://localhost:8003/v1", model: "google/medgemma-27b-text-it"}
+  reporter:    {base_url: "http://localhost:8003/v1", model: "google/medgemma-27b-text-it"}
+synth: {model: sonnet, batch_size: 5, workers: 8, timeout_s: 600}
+render: {workers: 4}
+read: {workers: 8, max_tokens: 1024, tessdata_dir: data/tessdata}
+adjudicate: {workers: 8, max_tokens: 1024}
+seed: 42

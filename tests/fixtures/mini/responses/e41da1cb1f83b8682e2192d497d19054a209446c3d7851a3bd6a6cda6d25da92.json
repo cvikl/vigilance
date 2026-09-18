@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:lab_report\",\"quote\":\"Patient subsequently developed hypoxaemia (SpO2 <92% on air) at 21:30 on 05/03/2020\"},\"to_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:ed_clerking\",\"quote\":\"Admitted to hospital at 00:11 on 06/03/2020\"},\"rationale\":\"Hypoxaemia recorded 21:30 on 05/03/2020, admitted 00:11 on 06/03/2020: 2.75 hours, which is not greater than the 4-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:ward_round\",\"quote\":\"Admitted to hospital at 22:09 on 07/03/2020\"},\"to_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:icu_note\",\"quote\":\"Invasive ventilation started at 04:29 on 15/03/2020\"},\"rationale\":\"Admitted 22:09 on 07/03/2020, ventilated 04:29 on 15/03/2020: 218.25 hours, which is greater than the 6-hour target, so breached; the ICU note gives a cause.\",\"status\":\"breached\",\"reason_tag\":\"other\",\"evidence\":[{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:icu_note\",\"quote\":\"Intubation delayed as all ventilators were in use; equipment sourced from theatres.\"}],\"confidence\":0.9}",
+ "finish_reason": "stop"
+}

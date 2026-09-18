@@ -1,0 +1,26 @@
+# Case ids the seed script must leave unreviewed (one per line; '#' comments allowed).
+# Chosen 2026-09-16 (Task 12) from the full-cohort queue with no reviews present; re-check at rehearsal
+# (docs/rebuild.md "S7 workbench" maps them to the seven pitch beats). Re-run the seed with --wipe after editing.
+## demo beats
+# Beats 1-2 (C4, C2): H4 breached_system, prescription_unsigned, 160.9 h vs 24 h; 3 verified quotes with rectangles; model call != computed status
+1f6e17d1-4c15-4397-9c4f-753e89c1d114:H4
+# Beat 3 (C2): H4 breached_legitimate, contraindication_documented (enoxaparin withheld for thrombocytopenia), 178.4 h; model and computed status agree; 5 verified quotes
+8eeabeae-aee9-4a9c-9508-e617a6c7d1a5:H4
+# Beat 4 (C1, handwriting): H4 abstain — handwritten ward round says "First dose given on 27/02/2020" with no time; the code refused to compute, the model guessed 48 h and said breached; priority 9 under the No data chip
+d5a13f55-6f36-42c0-9d29-410106d994a6:H4
+# Beat 4 (C1, spoken not clicked): H6 abstain_no_end, "no follow-up documented - nothing to review", priority 0, bottom of the queue (never seeded anyway: end_ts null)
+00f6f552-84e0-4553-a75d-f8090f02dcd0:H6
+# Beat 4 (C1): unverified evidence - H3 from_time quote not found on the page (badge, no rectangle) next to a verified to_time quote (rectangle)
+bf1553be-7b82-4b44-9dd0-e922a4da7515:H3
+# Beat 5 (C1): H5 model call != computed status - header shows 29.9 h / 6 h from the quoted hospital-admission time (computed breached), model said not_breached; override to not_breached moves the corrected H5 interval
+9f78628c-db81-43bd-af58-9f9b733924a7:H5
+
+## held — hidden from the queue at server start. `make demo-reset` releases the first three (PRE_RELEASE=3) so Latest opens on them, newest release on top; `n` (POST /demo/release) lands the next one live
+# pre-released 1st → row 3 on Latest: H4 abstain — handwritten ward round gives the date but no time; code refused, model guessed 48 h (C1)
+d5a13f55-6f36-42c0-9d29-410106d994a6:H4
+# pre-released 2nd → row 2: H3 from-time quote not found on the page (red badge, no rectangle) beside a verified to-time (C1) — spoken, not opened
+bf1553be-7b82-4b44-9dd0-e922a4da7515:H3
+# pre-released 3rd → row 1: H4 legitimate wait, contraindication_documented, 178.4 h (C2)
+8eeabeae-aee9-4a9c-9508-e617a6c7d1a5:H4
+# released live with `n` → row 1: H4 stalled, prescription_unsigned, 160.9 h; Owner / next action shown; Confirm (C2 C3)
+1f6e17d1-4c15-4397-9c4f-753e89c1d114:H4

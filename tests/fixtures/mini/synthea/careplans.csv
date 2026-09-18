@@ -1,0 +1,11 @@
+Id,START,STOP,PATIENT,ENCOUNTER,CODE,DESCRIPTION,REASONCODE,REASONDESCRIPTION
+768a160a-349f-4f3d-8d44-739f9c79f385,2020-03-05,2020-03-22,00051dc6-38dc-4781-a6db-b69479990236,89ed5ed3-353e-4cde-b43e-bee4f1194666,736376001,Infectious disease care plan (record artifact),840544004,Suspected COVID-19
+adb3e501-5aae-4812-89bd-5bc1f29f7fe1,1981-06-19,,0042fd95-cb1b-4fc2-8235-b44c11b095b2,dc2084f7-d687-492f-8ed3-00bc18c126c5,698360004,Diabetes self management plan,44054006,Diabetes
+3fa6d564-9c28-461d-85aa-9f6061bc2620,2020-03-07,2020-03-07,0042fd95-cb1b-4fc2-8235-b44c11b095b2,ac1c3f22-39a5-471e-b747-2d97ab13b06a,736376001,Infectious disease care plan (record artifact),840544004,Suspected COVID-19
+52f9afa1-ab4c-496d-85ed-726a96e7ddfe,2002-12-17,,0001049f-9248-47fe-b479-ea80eb51ce4a,393810df-cb24-40b9-9e81-578f2a72b21e,698360004,Diabetes self management plan,15777000,Prediabetes
+407f1968-4fea-427e-a5f5-c30766b4cbb9,2008-12-23,,0001049f-9248-47fe-b479-ea80eb51ce4a,f22a008c-48f7-4024-8216-2f24a850d02f,736285004,Hyperlipidemia clinical management plan,55822004,Hyperlipidemia
+a800719e-3ff3-4c14-9072-35a959d85c0e,2020-03-11,2020-04-01,0001049f-9248-47fe-b479-ea80eb51ce4a,25d1322a-71ca-4909-a15f-1e78f08339ad,736376001,Infectious disease care plan (record artifact),840544004,Suspected COVID-19
+ddcbcbbd-512b-4aeb-8f06-c2c3d9c9c5bf,2007-11-30,,00393b70-eb5e-4075-9348-cabfbc8ce514,b98bd880-a459-4519-add6-6310e04cfbff,443402002,Lifestyle education regarding hypertension,59621000,Hypertension
+56dd6089-9256-4d0b-81b9-e78fc777402f,2020-03-05,2020-03-28,00393b70-eb5e-4075-9348-cabfbc8ce514,9b1c7e89-cc85-4646-9159-bf7f791ab145,736376001,Infectious disease care plan (record artifact),840544004,Suspected COVID-19
+ba5120cd-a67a-4b37-9c04-d7ea82a43ceb,2002-03-08,,0007ad27-973e-4cd5-8d46-b636c85bfa84,f706881d-7e98-4de2-be91-568d7a3074a9,443402002,Lifestyle education regarding hypertension,59621000,Hypertension
+10c0dbb5-e91b-429c-86e2-f4ca4b890fd2,2020-03-04,2020-03-21,0007ad27-973e-4cd5-8d46-b636c85bfa84,7e65c86e-a83a-4e0c-9422-974c45a64e33,736376001,Infectious disease care plan (record artifact),840544004,Suspected COVID-19

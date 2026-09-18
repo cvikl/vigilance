@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-1.5-4b-it",
+ "content": "Eastbrook University Hospitals NHS Foundation Trust\nDepartment of Microbiology and Virology\n\nHospital No: 0007ad27-973e-4cds-8d46-b636c85bfa84\nDoc: 0007ad27-973e-4cds-8d46-b636c85bfa84:lab_report\n05/03/2020 05:35\n\nVirology Report\n\nSample type: Combined nose and throat swab\nSample collected: 21:56 on 04/03/2020\nSample received: 22:30 on 04/03/2020\nReported: 23:53 on 04/03/2020\n\nTest: SARS-CoV-2 RNA RT-PCR\nResult: POSITIVE\n\nComment: Detected. Patient had documented hypoxemia (SpO2 <92% on air) at 10:06 on\n04/03/2020 and was admitted to hospital at 17:13 on 04/03/2020; enoxaparin thromboprophylaxis\ncommenced 21:28 on 04/03/2020. Result telephoned to the on-call medical team on authorisation\nout of hours. Continue isolation precautions as per Trust COVID-19 pathway pending clinical review.\n\nLaboratory report\nPage 1 of 1",
+ "finish_reason": "stop"
+}

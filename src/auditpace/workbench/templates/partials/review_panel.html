@@ -1,0 +1,123 @@
+{% if saved is defined %}{% include "partials/banner.html" %}{% endif %}
+{% if saved %}{% include "partials/progress.html" %}{% endif %}
+<form class="review" hx-post="/reviews" hx-target="#review-panel" hx-swap="innerHTML">
+  <input type="hidden" name="case_id" value="{{ c.case_id }}">
+  {% if error %}<p class="err">{{ error }}</p>{% endif %}
+  {% if saved %}<p class="ok">Saved{% if next_case %} — <a href="{{ ('/case/' ~ next_case)|demo_href(demo) }}">check next</a>{% endif %}</p>{% endif %}
+  {% set classes = {} %}{% for rsn in c.criterion.reasons %}{% set _ = classes.update({rsn: protocol.reason_class(c.criterion.id, rsn)}) %}{% endfor %}
+  <fieldset class="main">
+    <p class="q">Does the verdict hold?</p>
+    {% if c.status == 'breached' %}
+    <label class="row breach-type"><span>Breach type</span>
+      <select name="confirm_reason" class="reason-select">
+        {% for rsn in c.criterion.reasons %}<option value="{{ rsn }}" data-class="{{ classes[rsn] }}" {{ 'selected' if rsn == c.reason_tag }}>{{ rsn|reason_label }} — {{ 'stalled' if classes[rsn] == 'system' else 'legitimate wait' }}</option>{% endfor %}
+        <option value="" data-class="undetermined" {{ 'selected' if not c.reason_tag }}>no reason documented — undetermined</option>
+      </select>
+      <span class="class-tag"></span>
+    </label>
+    {% endif %}
+    <div class="actions">
+      <button type="button" class="reveal" data-show="ov" data-hide="fl">Override…</button>
+      <button type="button" class="reveal" data-show="fl" data-hide="ov">Flag…</button>
+      <button name="action" value="confirm" class="primary">Confirm</button>
+    </div>
+  </fieldset>
+  <fieldset class="ov" {% if reopen != "ov" %}hidden{% endif %}>
+    <p class="q">Your verdict <span class="muted">replaces the model's for this case</span></p>
+    <div class="seg" role="radiogroup" aria-label="status">
+      <label><input type="radio" name="human_status" value="breached"><span>breached</span></label>
+      <label><input type="radio" name="human_status" value="not_breached"><span>not breached</span></label>
+      <label><input type="radio" name="human_status" value="abstain"><span>abstain</span></label>
+    </div>
+    <label class="row"><span>Reason</span>
+      <select name="human_reason" class="reason-select"><option value="" data-class="undetermined">reason (breached only)</option>
+        {% for r in c.criterion.reasons %}<option value="{{ r }}" data-class="{{ classes[r] }}">{{ r|reason_label }} — {{ 'stalled' if classes[r] == 'system' else 'legitimate wait' }}</option>{% endfor %}
+      </select> <span class="class-tag"></span>
+    </label>
+    <label class="row"><span>Note</span><input name="note" placeholder="optional — what the record shows"></label>
+    <div class="actions">
+      <button name="action" value="override">Save override</button>
+      <button type="button" class="cancel">Cancel</button>
+    </div>
+  </fieldset>
+  <fieldset class="fl" {% if reopen != "fl" %}hidden{% endif %}>
+    <p class="q">Flag this case <span class="muted">for the audit lead, without a verdict</span></p>
+    <label class="row"><span>What is wrong</span><input name="note_flag" placeholder="e.g. wrong patient, page unreadable, times contradict"></label>
+    <div class="actions">
+      <button name="action" value="flag">Save flag</button>
+      <button type="button" class="cancel">Cancel</button>
+    </div>
+  </fieldset>
+  <script>
+  (function(){
+    var form = document.currentScript.closest('form');
+    var confirmBtn = form.querySelector('button[value="confirm"]');
+    var actionBtns = Array.prototype.filter.call(form.querySelectorAll('button'), function(b){
+      return b.name === 'action';
+    });
+    var ov = form.querySelector('.ov');
+    var fl = form.querySelector('.fl');
+    var statusRadios = ov.querySelectorAll('input[name="human_status"]');
+    function clearFieldset(fs){
+      fs.querySelectorAll('input, select').forEach(function(el){
+        if (el.type === 'radio' || el.type === 'checkbox') el.checked = false;
+        else el.value = '';
+      });
+    }
+    function setRequired(on){
+      // `required` only while Override is open: a static attribute on the hidden fieldset would
+      // block Confirm and Flag; while open it stops an empty status leaving the browser at all
+      statusRadios.forEach(function(r){ r.required = on; });
+    }
+    function reset(){
+      ov.hidden = true;
+      fl.hidden = true;
+      clearFieldset(ov);
+      clearFieldset(fl);
+      setRequired(false);
+      actionBtns.forEach(function(btn){ btn.disabled = false; });
+      confirmBtn.hidden = false;
+    }
+    function reveal(show, hide){
+      hide.hidden = true;
+      clearFieldset(hide);
+      show.hidden = false;
+      setRequired(show === ov);
+      // the form's default submit-on-Enter target is the first enabled submit button in tree
+      // order; disable every action button outside the revealed fieldset so that target is
+      // always the revealed fieldset's own Save button (Confirm also needs hiding since it
+      // sits outside every fieldset the reveal touches)
+      actionBtns.forEach(function(b){
+        b.disabled = !show.contains(b);
+        b.hidden = b.disabled && b.value === 'confirm';
+      });
+    }
+    form.querySelectorAll('.reveal').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        reveal(form.querySelector('.' + btn.dataset.show), form.querySelector('.' + btn.dataset.hide));
+      });
+    });
+    form.querySelectorAll('.cancel').forEach(function(btn){
+      btn.addEventListener('click', reset);
+    });
+    // the breach-type label beside each reason select follows the chosen reason's class
+    form.querySelectorAll('.reason-select').forEach(function(sel){
+      var tag = sel.parentElement.querySelector('.class-tag');
+      var paint = function(){
+        var cls = sel.selectedOptions[0] ? sel.selectedOptions[0].dataset.class : '';
+        if (!tag) return;
+        tag.textContent = cls === 'system' ? 'stalled' : (cls === 'legitimate' ? 'legitimate wait' : (cls ? 'undetermined' : ''));
+        tag.className = 'class-tag chip ' + (cls === 'system' ? 'breached_system' : (cls === 'legitimate' ? 'breached_legitimate' : 'breached_undetermined'));
+      };
+      sel.addEventListener('change', paint);
+      paint();
+    });
+    // a 422 re-render arrives with the offending fieldset already open: apply the same button state
+    if (!ov.hidden) reveal(ov, fl);
+    else if (!fl.hidden) reveal(fl, ov);
+  })();
+  </script>
+</form>
+<h2>Review history</h2>
+{% if c.reviews %}<table>{% for r in c.reviews %}<tr><td>{{ r.reviewed_ts }}</td><td>{{ r.reviewer }}</td><td>{{ r.validation_state|replace('_', ' ') }}</td><td>{{ (r.human_status or '')|replace('_', ' ') }}</td><td>{{ r.human_reason|reason_label }}</td><td class="muted">{{ r.note or '' }}</td></tr>{% endfor %}</table>
+{% else %}<p class="muted">no reviews yet</p>{% endif %}

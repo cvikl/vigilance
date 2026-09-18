@@ -1,0 +1,152 @@
+# Clinical audit report — {{ p.run.protocol_id }}
+
+*{% if p.run.period %}{{ p.run.period.start }} to {{ p.run.period.end }}{% else %}period not set{% endif %} · cohort n = {{ p.run.cohort_n }} · generated {{ p.run.generated_ts }} UTC · run `{{ p.run.run_id }}` · {% if n_provisional == 0 %}**final**{% else %}**provisional** ({{ n_provisional }} of {{ p.criteria|length }} criteria){% endif %}*
+
+**Audit question.** {{ question }}
+
+## Summary
+
+{{ prose.summary }}
+
+| Criterion | Corrected rate (95 % CI) | Naive rate | Reviewed | Provisional | Hours-lost rank |
+|---|---|---|---|---|---|
+{% for c in p.criteria -%}
+| {{ c.id }} {{ c.name }} | {{ c.corrected.rate|pct }} % ({{ c.corrected.lo|ci(c.corrected.hi) }} %) | {{ c.naive.rate|pct }} % | {{ c.n_reviewed }} / {{ c.n }} | {{ c.provisional_reason or "no" }} | {{ c.timelost.rank|num }} |
+{% endfor %}
+## Findings
+
+{% for c in p.criteria -%}
+### {{ c.id }} — {{ c.name }} ({{ c.from_event }} → {{ c.to_event }}, target {{ c.target_hours|hours }} h; {{ c.standard }})
+
+**Where time is lost.** Corrected breach rate {{ c.corrected.rate|pct }} % (95 % CI {{ c.corrected.lo|ci(c.corrected.hi) }} %; method {{ c.method }}); naive model-only rate {{ c.naive.rate|pct }} % ({{ c.naive.lo|ci(c.naive.hi) }} %). Reviewed {{ c.n_reviewed }} of {{ c.n }} estimable cases. {{ c.n_abstain }} {{ "abstained (end event exists)" }}; {{ c.n_no_end }} {{ c.id|no_end_label }}.{% if c.provisional_reason %} **Provisional:** {{ c.provisional_reason }}.{% endif %} Breaches: {{ c.n_breached_system }} {{ "breached — stalled" }} ({{ c.rate_system.rate|pct }} %), {{ c.n_breached_legitimate }} {{ "breached — legitimate wait" }} ({{ c.rate_legitimate.rate|pct }} %), {{ c.n_breached_undetermined }} {{ "breached — reason undetermined" }} ({{ c.rate_undetermined.rate|pct }} %).
+
+{{ prose.criteria[c.id].where }}
+
+**Why.**
+
+| Reason | Class | n | Rate (95 % CI) |
+|---|---|---|---|
+{% for r in c.reasons -%}
+| {{ r.code }} | {{ r.klass }} | {{ r.n }} | {{ r.rate|pct }} % ({{ r.lo|ci(r.hi) }} %) |
+{% endfor %}
+{{ prose.criteria[c.id].why }}
+
+**Who.**
+
+| Segment | Value | n | Corrected rate (95 % CI) |
+|---|---|---|---|
+{% for s in c.segments if s.key != "organization" -%}
+| {{ s.key }} | {{ s.value }} | {{ s.n }} | {% if s.suppressed %}suppressed (n < {{ p.run.suppress_below }}){% else %}{{ s.corrected.rate|pct }} % ({{ s.corrected.lo|ci(s.corrected.hi) }} %){% endif %} |
+{% endfor %}
+{% if c.funnel %}Organisations outside funnel limits: {% for f in c.funnel %}{{ f.org }} {{ f.signal }} ({{ f.rate|pct }} %, {{ f.lo|ci(f.hi) }} %, n = {{ f.n }}){{ ", " if not loop.last }}{% endfor %}.{% else %}No organisation outside its funnel limits.{% endif %}
+{% if c.runchart.signals %}Run chart: {% for w in c.runchart.signals %}{{ w.week }} {{ w.signal }}{{ ", " if not loop.last }}{% endfor %} over {{ c.runchart.n_weeks }} weeks.{% else %}Run chart: no signal over {{ c.runchart.n_weeks }} weeks.{% endif %}
+
+{{ prose.criteria[c.id].who }}
+
+{% endfor -%}
+## Signals and recommended actions
+
+| Signal | Where | Rate (95 % CI) | n | Action | Owner (responsible; notified) | By whom |
+|---|---|---|---|---|---|---|
+{% for a in p.alerts -%}
+| {{ a.kind }} {{ a.signal }} | {{ a.criterion_id }} {{ a.segment_key }} = {{ a.segment_value }} | {{ a.rate|pct }} % ({{ a.lo|ci(a.hi) }} %) | {{ a.n }} | {{ a.action }} | {{ a.owner }} | audit lead |
+{% endfor -%}
+{% if not p.alerts %}
+No signal fired on this run.
+{% endif %}
+Actions and owners are those written into the audit protocol's `actions` block; the report writer adds none.
+
+{{ prose.actions_note }}
+
+## Health inequalities
+
+| Criterion | Segment | Value | n | Corrected rate (95 % CI) |
+|---|---|---|---|---|
+{% for c in p.criteria %}{% for s in c.segments if s.key in ("age_band", "sex", "race", "ethnicity") -%}
+| {{ c.id }} | {{ s.key }} | {{ s.value }} | {{ s.n }} | {% if s.suppressed %}suppressed (n < {{ p.run.suppress_below }}){% else %}{{ s.corrected.rate|pct }} % ({{ s.corrected.lo|ci(s.corrected.hi) }} %){% endif %} |
+{% endfor %}{% endfor %}
+Deprivation is not available in the source data.
+
+## Change since previous run
+
+{% if comparison -%}
+Previous run `{{ comparison.prev_run_id }}` ({{ comparison.prev_generated_ts }}); {{ comparison.reviews_added }} reviews added since.
+
+| Criterion | Previous (95 % CI) | Current (95 % CI) | Δ pp | Reviewed prev → cur | Provisional prev → cur |
+|---|---|---|---|---|---|
+{% for d in comparison.criteria -%}
+| {{ d.criterion_id }} | {{ d.rate_prev|pct }} % ({{ d.lo_prev|ci(d.hi_prev) }} %) | {{ d.rate_cur|pct }} % ({{ d.lo_cur|ci(d.hi_cur) }} %) | {{ d.delta_pp|signed }} | {{ d.n_reviewed_prev }} → {{ d.n_reviewed_cur }} | {{ "yes" if d.provisional_prev else "no" }} → {{ "yes" if d.provisional_cur else "no" }} |
+{% endfor %}
+New alerts: {{ comparison.alerts_new|join(", ") or "none" }}. Resolved: {{ comparison.alerts_resolved|join(", ") or "none" }}. Persisting: {{ comparison.alerts_persisting|join(", ") or "none" }}.
+{% if comparison.org_map_changed %}Organisation pseudonyms were re-assigned since the previous run; Org-nn labels are not comparable across the two runs.
+{% endif -%}
+{%- else %}{% if note %}{{ note }}{% endif %}{%- endif %}
+
+## Methods
+
+- Protocol `{{ p.run.protocol_id }}`, hash `{{ p.run.protocol_hash[:12] }}`; code `{{ p.run.code_sha }}`.
+- Adjudicator {{ p.run.adjudicator.model }} (prompt {{ p.run.adjudicator.prompt_version }}); reader version {{ p.run.reader.read_version }}; report writer {{ p.run.reporter.model or "none (narrative withheld)" }}{% if p.run.reporter.prompt_version %} (prompt {{ p.run.reporter.prompt_version }}){% endif %}.
+- Estimator: prediction-powered inference (Angelopoulos et al. 2023, mean estimator) on the estimation pool ({{ p.run.review.estimation_pool_fraction }} of reviews), {{ p.run.review.confidence }} confidence; Wilson intervals for the naive and classical rates. The PPI variance omits the (≥ 0) covariance term, so corrected intervals are conservative.
+- Cells with n < {{ p.run.suppress_below }} are suppressed.
+- Who reviews the data entered: the clinician, through the review workbench (Confirm, Override, Flag per case); a flagged review is excluded from every estimate. Reviewers on this run: {{ p.quality.reviews.reviewers|join(", ") or "none" }}. Cases with a review on file: {{ p.quality.reviews.n_latest }} (validated {{ p.quality.reviews.n_validated }}, disputed {{ p.quality.reviews.n_disputed }}, flagged {{ p.quality.reviews.n_flagged }}).
+- The "by whom" column names the audit lead because the protocol has no field for it.
+- Replicable: `auditpace estimate && auditpace report` on the same tables reproduces every figure; estimates computed {{ p.run.estimates_computed_ts }}.
+
+## Caveats
+
+{% for c in p.criteria if c.provisional_reason -%}
+- {{ c.id }}: corrected interval is provisional — {{ c.provisional_reason }}.
+{% endfor -%}
+- Abstentions: {{ p.quality.n_abstain }} of {{ p.quality.n_cases }} cases ({{ p.quality.abstain_rate|pct }} %) had an end event but no verdict; {{ p.quality.n_no_end }} ({{ p.quality.no_end_rate|pct }} %) had no end event documented{% for c in p.criteria if c.id == "H6" and c.n_no_end > 0 %} — for H6 this is "no follow-up documented", not a breach and not compliance{% endfor %}.
+- Citations: {{ p.quality.n_unverified_cites }} of {{ p.quality.n_cites }} quoted passages ({{ p.quality.unverified_cite_rate|pct }} %) could not be verified on the page and carry no rectangle in the workbench.
+- Interval widths (95 % CI, corrected): {% for c in p.criteria %}{{ c.id }} {{ c.corrected.lo|ci(c.corrected.hi) }} %{{ "; " if not loop.last }}{% endfor %}.
+- Suppressed cells: {{ p.quality.n_suppressed_cells }}. Quarantined items: {% for k, v in p.quality.quarantined.items() %}{{ k }} {{ v }}{{ ", " if not loop.last }}{% else %}none{% endfor %}.
+- Completeness: {% for r in p.completeness %}{{ r.event }} {{ r.n_with }}/{{ r.n_with + r.n_without }}{{ ", " if not loop.last }}{% endfor %}.
+{% if "seed" in p.quality.reviews.reviewers -%}
+- Reviews on this run include a rehearsal seed drawn from structured truth (reviewer `seed`); corrected intervals are not clinician-validated.
+{% endif -%}
+{% if model_note -%}
+- Narrative sections withheld: {{ model_note }}.
+{% endif -%}
+{% if rejections -%}
+- {{ rejections|length }} paragraph{{ "s" if rejections|length != 1 }} withheld by the back-check: {% for r in rejections %}{{ r.section }} ({{ r.reason }}){{ ", " if not loop.last }}{% endfor %}.
+{% endif %}
+{{ prose.caveats_note }}
+{% if p.validation %}
+## Validation on the synthetic cohort (not available on live data)
+
+These figures compare model verdicts with the planted structured truth of the synthetic cohort; a live audit has no such truth and cannot produce them.
+
+| Criterion | κ (verdict vs truth) | n |
+|---|---|---|
+{% for k in p.validation.kappa -%}
+| {{ k.criterion_id }} | {{ k.kappa|k2 }} | {{ k.n }} |
+{% endfor %}
+| Criterion | Reason-tag accuracy | n breached |
+|---|---|---|
+{% for a in p.validation.reason_accuracy -%}
+| {{ a.criterion_id }} | {{ a.acc|pct }} % | {{ a.n }} |
+{% endfor %}
+| Criterion | Review fraction | Naive coverage | Corrected coverage |
+|---|---|---|---|
+{% for row in coverage_pairs -%}
+| {{ row.criterion_id }} | {{ row.fraction }} | {{ row.naive|k2 }} | {{ row.corrected|k2 }} |
+{% endfor %}
+{% if h5_bias %}H5 naive coverage falls below 0.9 at review fractions under 1.0: the model's hospital-admission-as-ICU-admission bias, corrected by review.{% endif %}
+{% endif %}
+## Appendix
+
+### Segment tables
+
+{% for c in p.criteria -%}
+{{ c.id }} — {{ c.name }}
+
+| Segment | Value | n | Corrected rate (95 % CI) |
+|---|---|---|---|
+{% for s in c.segments -%}
+| {{ s.key }} | {{ s.value }} | {{ s.n }} | {% if s.suppressed %}suppressed (n < {{ p.run.suppress_below }}){% else %}{{ s.corrected.rate|pct }} % ({{ s.corrected.lo|ci(s.corrected.hi) }} %){% endif %} |
+{% endfor %}
+{% endfor -%}
+### Gateway
+
+Payload sha256 `{{ payload_sha[:12] }}`, {{ payload_bytes }} bytes; {% if p.run.reporter.model is none %}No report writer was used; every narrative paragraph is a placeholder.{% elif model_note %}Report writer unavailable ({{ model_note }}); every narrative paragraph is a placeholder.{% else %}{{ n_paragraphs - rejections|length }} of {{ n_paragraphs }} narrative paragraphs accepted{% if rejections %}, {{ rejections|length }} paragraph{{ "s" if rejections|length != 1 }} withheld ({% for r in rejections %}{{ r.section }} ({{ r.reason }}){{ ", " if not loop.last }}{% endfor %}){% endif %}.{% endif %}

@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:discharge_summary\",\"quote\":\"Discharge date/time: 11:22 on 15/03/2020\"},\"to_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:discharge_summary\",\"quote\":\"Respiratory clinic review arranged within 2 weeks of discharge\"},\"rationale\":\"Discharged 11:22 on 15/03/2020, follow-up arranged within 2 weeks of discharge: 14 days, which is less than the 336-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

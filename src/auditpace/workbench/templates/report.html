@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}report{% endblock %}
+{% block content %}
+<h1>Audit report</h1>
+<p class="adr">The clinical audit the trust already owes, in NHS England's structure — written from counts and rates only, never from a patient's record.</p>
+{% if body %}
+<div class="report-bar no-print">
+  <span class="muted">{% if is_draft %}Clinician's draft — edited from the generated report{% else %}Generated report — not yet edited{% endif %}</span>
+  <span class="actions">
+    {% if edit %}
+      <a class="btn" href="{{ '/report'|demo_href(demo) }}">Cancel</a>
+    {% else %}
+      <a class="btn" href="{{ '/report'|demo_href(demo) }}{{ '&' if demo else '?' }}edit=1">Edit draft</a>
+      {% if is_draft %}<form method="post" action="/report/draft/reset{{ '?demo=1' if demo }}" class="inline"><button type="submit" class="btn" onclick="return confirm('Discard the draft and go back to the generated report?')">Discard draft</button></form>{% endif %}
+      <a class="btn" href="/report/download">Download .md</a>
+      <button type="button" class="btn primary" onclick="window.print()">Export PDF</button>
+    {% endif %}
+  </span>
+</div>
+{% if edit %}
+<form method="post" action="/report/draft{{ '?demo=1' if demo }}" class="report-edit">
+  <textarea name="text" rows="30" spellcheck="true">{{ text }}</textarea>
+  <div class="actions"><button type="submit" class="btn primary">Save draft</button> <a class="btn" href="{{ '/report'|demo_href(demo) }}">Cancel</a></div>
+</form>
+{% else %}
+<article class="report">{{ body }}</article>
+{% endif %}
+{% else %}<p class="muted">No report yet — run <code>auditpace report</code> (writes {{ path }}).</p>{% endif %}
+{% endblock %}

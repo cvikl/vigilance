@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:ed_clerking\",\"quote\":\"Admitted to hospital at 22:09 on 07/03/2020\"},\"to_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:ward_round\",\"quote\":\"admitted to the intensive care unit at 18:07 on 08/03/2020\"},\"rationale\":\"Admitted 22:09 on 07/03/2020, admitted to ICU 18:07 on 08/03/2020: 19.67 hours, which is greater than the 12-hour target, so breached; the ICU note gives a cause.\",\"status\":\"breached\",\"reason_tag\":\"escalation_delayed\",\"evidence\":[{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:icu_note\",\"quote\":\"NEWS2 of 8 recorded but critical care review requested only after the consultant ward round.\"}],\"confidence\":0.9}",
+ "finish_reason": "stop"
+}

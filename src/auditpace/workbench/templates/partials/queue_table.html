@@ -1,0 +1,14 @@
+{% if hx %}{% include "partials/chips.html" %}{% endif %}
+<div class="queue-meta">
+  <span class="muted">{% if n_all %}{{ n_all }} case{{ 's' if n_all != 1 }}{% if filters.sort == 'excess' %} · longest over target first{% endif %}{% else %}No cases match.{% endif %}</span>
+  <span class="muted" id="queue-version" data-version="{{ version }}"></span>
+</div>
+{% if rows %}
+<table class="queue">
+<thead><tr><th>priority</th><th>patient · why this row</th><th>handoff</th><th>documented h / target</th><th>status</th><th>reason</th></tr></thead>
+<tbody id="queue-rows">
+{% include "partials/queue_rows.html" %}
+</tbody>
+</table>
+{% endif %}
+{% if n_no_end %}<p class="footer">{{ n_no_end }} case{{ 's' if n_no_end != 1 }} with no end event — nothing to review, nothing imputed.</p>{% endif %}

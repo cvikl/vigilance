@@ -1,0 +1,18 @@
+# vigilance — hackathon demo, served at https://vigilance.legislabs.uk
+# One container on the shared Caddy network; the route is the drop-in /opt/caddy-sites/vigilance.caddy.
+# Data (pipeline outputs, ~1.5 GB) and docs (report.md, demo_cases.txt) are bind-mounted from /opt/vigilance.
+services:
+  vigilance:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: vigilance
+    volumes:
+      - /opt/vigilance/data:/srv/data
+      - /opt/vigilance/docs:/srv/docs
+    restart: unless-stopped
+
+networks:
+  default:
+    name: deploy_default
+    external: true

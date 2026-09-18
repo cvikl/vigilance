@@ -1,0 +1,5 @@
+# vigilance hackathon demo. Lives at /opt/caddy-sites/vigilance.caddy on the host and is imported by the
+# Compass Caddy (which owns 80/443 on this box). Synthetic data only; no gate.
+vigilance.legislabs.uk {
+	reverse_proxy vigilance:8030
+}

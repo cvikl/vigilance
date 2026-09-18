@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}results{% endblock %}
+{% block content %}
+<h1>Results &amp; alerts</h1>
+<p class="adr">Where the trust loses time at handoffs, who owns the fix, and how sure we are.</p>
+<div class="panels">
+{% for c in r.criteria %}
+<section class="panel {{ 'flag' if c.row and c.row.n_breached_system and c.row.n_breached_system > 0 }}">
+  <header><span class="hid">{{ c.criterion.id }}</span> <span class="hname">{{ c.criterion.name }}</span> <span class="muted tgt">target {{ c.criterion.target_hours|hours_short }}</span></header>
+  {% if c.row %}
+  <div class="big"><span class="rate">{{ c.row.corrected_rate|pct }}</span><span class="ci muted">{{ c.row.corrected_lo|ci(c.row.corrected_hi) }}</span></div>
+  <div class="stack" title="stalled / legitimate / undetermined">
+    <div class="s" style="width:{{ 100 * (c.row.rate_system or 0) }}%"></div>
+    <div class="l" style="width:{{ 100 * (c.row.rate_legitimate or 0) }}%"></div>
+    <div class="u" style="width:{{ 100 * (c.row.rate_undetermined or 0) }}%"></div>
+  </div>
+  <dl class="kv">
+    <div><dt>stalled</dt><dd class="sysc">{{ c.row.n_breached_system }}</dd></div>
+    <div><dt>legitimate wait</dt><dd>{{ c.row.n_breached_legitimate }}</dd></div>
+    <div><dt>{{ 'abstain_no_end'|category_label(c.criterion.id) }}</dt><dd>{{ c.row.n_no_end }}</dd></div>
+    <div><dt>reviewed</dt><dd>{{ c.row.n_reviewed }} / {{ c.row.n }}</dd></div>
+  </dl>
+  {% if c.provisional %}<p class="provisional" title="{{ c.provisional }}">provisional · {{ c.provisional|provisional_short }}</p>{% endif %}
+  <a class="more" href="#crit-{{ c.criterion.id }}">detail</a>
+  {% else %}<p class="muted">no applicable cases</p>{% endif %}
+</section>
+{% endfor %}
+</div>
+
+<h2 id="alerts">Alerts</h2>
+<p class="muted">Action and owner come from the protocol's actions block, written by the clinical team, not by the model.</p>
+{% if r.alerts %}
+<div class="cards">
+{% for a in r.alerts %}
+{% set crit = snapshot.criterion(a.criterion_id) %}
+<div class="card alert {{ a.signal }}" data-demo="C3">
+  <p class="alert-title"><span class="sig {{ a.signal }}">{{ a.signal|replace('_', ' ') }}</span> <b>{{ a.criterion_id }} {{ crit.name }}</b></p>
+  <p class="alert-where">{% if a.kind == 'org_outlier' %}Organisation <code>{{ (a.segment_value or '')[:8] }}</code> is <b>outside the funnel limit</b> — more breaches than chance allows{% elif a.kind == 'org_exemplar' %}Organisation <code>{{ (a.segment_value or '')[:8] }}</code> is <b>below the funnel limit</b> — fewer breaches than chance allows; worth learning from{% elif a.kind == 'criterion_below_target' %}Whole trust <b>below the compliance target</b> for this handoff{% elif a.kind == 'week_outlier' %}Week of <code>{{ (a.segment_value or '')[:10] }}</code> <b>outside the run-chart limit</b>{% else %}{{ a.kind|replace('_', ' ') }}{% endif %}</p>
+  <p class="alert-why">{{ a.justification|replace('_', ' ') }}</p>
+  <div class="field"><b>Action</b><span>{{ a.action }}</span></div>
+  <div class="field"><b>Owner</b><span>{{ a.owner }}</span></div>
+  <p class="muted">{% if a.method == 'naive' %}model-only rate · {{ a.n_reviewed|int }} reviews yet{% else %}corrected rate · {{ a.n_reviewed|int }} reviewed{% endif %}</p>
+</div>
+{% endfor %}
+</div>
+{% else %}<p class="muted">no alerts fired</p>{% endif %}
+
+<h2 id="timelost">Time lost</h2>
+<p class="muted">Hours over target summed across stalled breaches (legitimate waits excluded). Rank 1 is where the trust loses the most time this period.</p>
+<table class="data timelost">
+<thead><tr><th>rank</th><th>handoff</th><th>organisation</th><th>hours lost</th><th>median excess</th><th>stalled breaches</th></tr></thead>
+<tbody>{% for t in r.timelost %}<tr class="{{ 'rank1' if t.rank == 1 }}"><td>{{ t.rank|int }}</td><td>{{ t.criterion_id }} {{ snapshot.criterion(t.criterion_id).name }}</td><td>{{ (t.organization_id or 'all')[:8] }}</td><td>{{ t.hours_lost|hours_short }}</td><td>{{ t.median_excess_h|hours_short }}</td><td>{{ t.n_breached_system }}</td></tr>{% endfor %}</tbody>
+</table>
+<h3>By organisation</h3>
+<p class="muted">Top organisations by hours lost, across handoffs. An organisation that also carries an alert above is marked.</p>
+{% set alerted = [] %}{% for a in r.alerts %}{% if a.segment_value %}{% set _ = alerted.append(a.criterion_id ~ '|' ~ a.segment_value) %}{% endif %}{% endfor %}
+<table class="data timelost">
+<thead><tr><th>handoff</th><th>organisation</th><th>hours lost</th><th>median excess</th><th>stalled breaches</th><th></th></tr></thead>
+<tbody>{% for t in r.timelost_orgs[:8] %}<tr class="{{ 'alerted' if (t.criterion_id ~ '|' ~ t.organization_id) in alerted }}"><td>{{ t.criterion_id }}</td><td>{{ (t.organization_id or 'all')[:8] }}</td><td>{{ t.hours_lost|hours_short }}</td><td>{{ t.median_excess_h|hours_short }}</td><td>{{ t.n_breached_system }}</td><td>{% if (t.criterion_id ~ '|' ~ t.organization_id) in alerted %}<span class="sig alarm_high">alerted</span>{% endif %}</td></tr>{% endfor %}</tbody>
+</table>
+{% if r.timelost_orgs|length > 8 %}<details><summary>all {{ r.timelost_orgs|length }} organisation rows</summary>
+<table class="data">
+<thead><tr><th>handoff</th><th>organisation</th><th>hours lost</th><th>median excess</th><th>stalled breaches</th></tr></thead>
+<tbody>{% for t in r.timelost_orgs %}<tr><td>{{ t.criterion_id }}</td><td>{{ (t.organization_id or 'all')[:8] }}</td><td>{{ t.hours_lost|hours_short }}</td><td>{{ t.median_excess_h|hours_short }}</td><td>{{ t.n_breached_system }}</td></tr>{% endfor %}</tbody>
+</table>
+</details>{% endif %}
+
+<h2>Per handoff</h2>
+{% for c in r.criteria %}
+<section class="crit" id="crit-{{ c.criterion.id }}">
+<h2>{{ c.criterion.id }} {{ c.criterion.name }}</h2>
+{% if c.row %}
+<p>
+  corrected <b>{{ c.row.corrected_rate|pct }}</b> ({{ c.row.corrected_lo|ci(c.row.corrected_hi) }})
+  {% if c.provisional %}<span class="provisional" title="{{ c.provisional }}">provisional · {{ c.provisional|provisional_short }}</span>{% endif %}
+  · naive {{ c.row.naive_rate|pct }} ({{ c.row.naive_lo|ci(c.row.naive_hi) }})
+  · {{ 'prediction-powered' if c.row.method == 'ppi' else c.row.method|replace('_', ' ') }} · n {{ c.row.n }} · reviewed {{ c.row.n_reviewed }}
+</p>
+<div class="stack" title="share of cases: stalled / legitimate wait / undetermined; the rest are within target">
+  <div class="s" style="width:{{ 100 * (c.row.rate_system or 0) }}%"></div>
+  <div class="l" style="width:{{ 100 * (c.row.rate_legitimate or 0) }}%"></div>
+  <div class="u" style="width:{{ 100 * (c.row.rate_undetermined or 0) }}%"></div>
+</div>
+<p class="legend"><span class="sw s"></span> stalled {{ c.row.n_breached_system }} ({{ c.row.rate_system|pct }}) — the system's delay
+  <span class="sw l"></span> legitimate wait {{ c.row.n_breached_legitimate }} ({{ c.row.rate_legitimate|pct }}) — a clinical reason
+  <span class="sw u"></span> undetermined {{ c.row.n_breached_undetermined }} ({{ c.row.rate_undetermined|pct }}) — breached, cause not documented
+  <span class="sw w"></span> within target — the rest of the bar
+  · {{ 'abstain'|category_label(c.criterion.id) }} {{ c.row.n_abstain }} · {{ 'abstain_no_end'|category_label(c.criterion.id) }} {{ c.row.n_no_end }} (not in the bar: nothing is imputed)</p>
+{% if c.reason_breakdown %}<p class="muted">reasons: {% for tag, v in c.reason_breakdown.items() %}{{ tag|reason_label }} {{ v.n }} ({{ v.rate|pct }}){{ ', ' if not loop.last }}{% endfor %}</p>{% endif %}
+<div class="charts">
+  <figure>{{ funnel_svg(c.funnel) or '<p class="muted">no organisation-level data (n &lt; 5 everywhere)</p>'|safe }}
+    <figcaption class="muted">Funnel: each dot is an organisation (x = cases, y = breach rate). Grey line = trust rate; dashed amber = 2σ, dashed red = 3σ limits. A dot above the limits is struggling beyond chance; below, excelling.</figcaption></figure>
+  <figure>{{ runchart_svg(c.runchart) or '<p class="muted">no weekly data (n &lt; 5 every week)</p>'|safe }}
+    <figcaption class="muted">Run chart: weekly corrected rate; red points cross the upper limit, green the lower.</figcaption></figure>
+</div>
+{% if c.segments %}
+<details><summary>segments</summary>
+<table><thead><tr><th>segment</th><th>value</th><th>n</th><th>corrected</th><th>CI</th></tr></thead><tbody>
+{% for s in c.segments %}<tr><td>{{ s.segment_key|replace('_', ' ') }}</td><td>{{ (s.segment_value or '')[:12] }}</td><td>{{ s.n }}</td>
+<td>{% if s.suppressed %}suppressed (n &lt; {{ protocol.suppress_below }}){% else %}{{ s.corrected_rate|pct }}{% endif %}</td>
+<td>{% if not s.suppressed %}{{ s.corrected_lo|ci(s.corrected_hi) }}{% endif %}</td></tr>{% endfor %}
+</tbody></table></details>
+{% endif %}
+{% else %}<p class="muted">no applicable cases</p>{% endif %}
+</section>
+{% endfor %}
+{% endblock %}

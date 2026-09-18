@@ -1,0 +1,9 @@
+{% if page %}
+<div class="pageview" data-page-id="{{ page.page_id }}">
+  <svg viewBox="0 0 {{ page.width }} {{ page.height }}" xmlns="http://www.w3.org/2000/svg">
+    <image href="/page/{{ page.page_id }}.jpg" width="{{ page.width }}" height="{{ page.height }}"/>
+    {% if ev and ev.verified %}{% for b in ev.bboxes %}<rect x="{{ b.x0 }}" y="{{ b.y0 }}" width="{{ b.x1 - b.x0 }}" height="{{ b.y1 - b.y0 }}"/>{% endfor %}{% endif %}
+  </svg>
+</div>
+{% if ev and not ev.verified %}<p class="badge unverified">quote not found on this page — nothing highlighted</p>{% endif %}
+{% else %}<p class="muted">no page to show</p>{% endif %}

@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:lab_report\",\"quote\":\"Sample collected: 13:08 on 05/03/2020\"},\"to_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:lab_report\",\"quote\":\"Reported: 20:40 on 05/03/2020\"},\"rationale\":\"Sample collected 13:08 on 05/03/2020, reported 20:40 on 05/03/2020: 7.25 hours, which is not greater than the 24-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

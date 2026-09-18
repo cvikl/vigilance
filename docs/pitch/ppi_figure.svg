@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="484" viewBox="0 0 1200 484" font-family="Inter, system-ui, sans-serif">
+<style>
+  .title { font-size: 17px; font-weight: 700; fill: #1b1f24; }
+  .sub { font-size: 13px; fill: #6a737d; }
+  .tick { font-size: 12px; fill: #6a737d; }
+  .axis { font-size: 13px; fill: #6a737d; }
+  .lab { font-size: 13px; font-weight: 600; }
+  .grid { stroke: #e6e9ed; stroke-width: 1; }
+  .cap { font-size: 12px; fill: #6a737d; }
+</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="26" class="title">H4 admission → VTE: width of the 95 % interval</text>
+<text x="70" y="44" class="sub">model agrees with the truth here — PPI keeps the model's certainty from five reviews</text>
+<line x1="70" x2="576.0" y1="396.0" y2="396.0" class="grid"/>
+<text x="62" y="400.0" class="tick" text-anchor="end">0 pp</text>
+<line x1="70" x2="576.0" y1="311.0" y2="311.0" class="grid"/>
+<text x="62" y="315.0" class="tick" text-anchor="end">16 pp</text>
+<line x1="70" x2="576.0" y1="226.0" y2="226.0" class="grid"/>
+<text x="62" y="230.0" class="tick" text-anchor="end">32 pp</text>
+<line x1="70" x2="576.0" y1="141.0" y2="141.0" class="grid"/>
+<text x="62" y="145.0" class="tick" text-anchor="end">49 pp</text>
+<line x1="70" x2="576.0" y1="56.0" y2="56.0" class="grid"/>
+<text x="62" y="60.0" class="tick" text-anchor="end">65 pp</text>
+<text x="70.0" y="414" class="tick" text-anchor="middle">5</text>
+<text x="165.1" y="414" class="tick" text-anchor="middle">10</text>
+<text x="260.2" y="414" class="tick" text-anchor="middle">20</text>
+<text x="315.8" y="414" class="tick" text-anchor="middle">30</text>
+<text x="355.2" y="414" class="tick" text-anchor="middle">40</text>
+<text x="410.9" y="414" class="tick" text-anchor="middle">60</text>
+<text x="480.9" y="414" class="tick" text-anchor="middle">100</text>
+<text x="536.5" y="414" class="tick" text-anchor="middle">150</text>
+<text x="576.0" y="414" class="tick" text-anchor="middle">200</text>
+<text x="323.0" y="438" class="axis" text-anchor="middle">clinician reviews, of 1381 cases (log scale)</text>
+<polyline points="70.0,80.2 165.1,139.4 220.7,174.4 260.2,198.0 315.8,228.7 355.2,249.1 410.9,274.2 450.3,289.4 480.9,300.2 536.5,317.2 576.0,327.6" fill="none" stroke="#e67e22" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="70.0" cy="80.2" r="3.5" fill="#e67e22"/>
+<circle cx="165.1" cy="139.4" r="3.5" fill="#e67e22"/>
+<circle cx="220.7" cy="174.4" r="3.5" fill="#e67e22"/>
+<circle cx="260.2" cy="198.0" r="3.5" fill="#e67e22"/>
+<circle cx="315.8" cy="228.7" r="3.5" fill="#e67e22"/>
+<circle cx="355.2" cy="249.1" r="3.5" fill="#e67e22"/>
+<circle cx="410.9" cy="274.2" r="3.5" fill="#e67e22"/>
+<circle cx="450.3" cy="289.4" r="3.5" fill="#e67e22"/>
+<circle cx="480.9" cy="300.2" r="3.5" fill="#e67e22"/>
+<circle cx="536.5" cy="317.2" r="3.5" fill="#e67e22"/>
+<circle cx="576.0" cy="327.6" r="3.5" fill="#e67e22"/>
+<polyline points="70.0,369.6 165.1,369.6 220.7,369.6 260.2,369.6 315.8,369.6 355.2,369.6 410.9,369.6 450.3,369.6 480.9,369.6 536.5,369.6 576.0,369.6" fill="none" stroke="#9aa0a6" stroke-width="3" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polyline points="70.0,369.6 165.1,367.8 220.7,368.7 260.2,369.1 315.8,368.4 355.2,369.0 410.9,369.0 450.3,368.8 480.9,369.1 536.5,369.3 576.0,369.3" fill="none" stroke="#1f6feb" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="70.0" cy="369.6" r="3.5" fill="#1f6feb"/>
+<circle cx="165.1" cy="367.8" r="3.5" fill="#1f6feb"/>
+<circle cx="220.7" cy="368.7" r="3.5" fill="#1f6feb"/>
+<circle cx="260.2" cy="369.1" r="3.5" fill="#1f6feb"/>
+<circle cx="315.8" cy="368.4" r="3.5" fill="#1f6feb"/>
+<circle cx="355.2" cy="369.0" r="3.5" fill="#1f6feb"/>
+<circle cx="410.9" cy="369.0" r="3.5" fill="#1f6feb"/>
+<circle cx="450.3" cy="368.8" r="3.5" fill="#1f6feb"/>
+<circle cx="480.9" cy="369.1" r="3.5" fill="#1f6feb"/>
+<circle cx="536.5" cy="369.3" r="3.5" fill="#1f6feb"/>
+<circle cx="576.0" cy="369.3" r="3.5" fill="#1f6feb"/>
+<line x1="326.0" x2="352.0" y1="70" y2="70" stroke="#e67e22" stroke-width="3"/>
+<text x="360.0" y="74" class="lab" fill="#e67e22">reviews only</text>
+<line x1="326.0" x2="352.0" y1="90" y2="90" stroke="#9aa0a6" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="360.0" y="94" class="lab" fill="#9aa0a6">model only (naive)</text>
+<line x1="326.0" x2="352.0" y1="110" y2="110" stroke="#1f6feb" stroke-width="3"/>
+<text x="360.0" y="114" class="lab" fill="#1f6feb">prediction-powered (PPI)</text>
+<text x="670.0" y="26" class="title">H5 ICU → ventilation: does the interval hold the truth?</text>
+<text x="670.0" y="44" class="sub">model is biased here — model-only never does; corrected, it does</text>
+<line x1="670.0" x2="1176.0" y1="396.0" y2="396.0" class="grid"/>
+<text x="662.0" y="400.0" class="tick" text-anchor="end">0 %</text>
+<line x1="670.0" x2="1176.0" y1="311.0" y2="311.0" class="grid"/>
+<text x="662.0" y="315.0" class="tick" text-anchor="end">25 %</text>
+<line x1="670.0" x2="1176.0" y1="226.0" y2="226.0" class="grid"/>
+<text x="662.0" y="230.0" class="tick" text-anchor="end">50 %</text>
+<line x1="670.0" x2="1176.0" y1="141.0" y2="141.0" class="grid"/>
+<text x="662.0" y="145.0" class="tick" text-anchor="end">75 %</text>
+<line x1="670.0" x2="1176.0" y1="56.0" y2="56.0" class="grid"/>
+<text x="662.0" y="60.0" class="tick" text-anchor="end">100 %</text>
+<text x="670.0" y="414" class="tick" text-anchor="middle">5</text>
+<text x="765.1" y="414" class="tick" text-anchor="middle">10</text>
+<text x="860.2" y="414" class="tick" text-anchor="middle">20</text>
+<text x="915.8" y="414" class="tick" text-anchor="middle">30</text>
+<text x="955.2" y="414" class="tick" text-anchor="middle">40</text>
+<text x="1010.9" y="414" class="tick" text-anchor="middle">60</text>
+<text x="1080.9" y="414" class="tick" text-anchor="middle">100</text>
+<text x="1136.5" y="414" class="tick" text-anchor="middle">150</text>
+<text x="1176.0" y="414" class="tick" text-anchor="middle">200</text>
+<text x="923.0" y="438" class="axis" text-anchor="middle">clinician reviews, of 219 cases (log scale)</text>
+<polyline points="670.0,396.0 765.1,396.0 820.7,396.0 860.2,396.0 915.8,396.0 955.2,396.0 1010.9,396.0 1050.3,396.0 1080.9,396.0 1136.5,396.0 1176.0,396.0" fill="none" stroke="#9aa0a6" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="670.0" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="765.1" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="820.7" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="860.2" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="915.8" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="955.2" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="1010.9" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="1050.3" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="1080.9" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="1136.5" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<circle cx="1176.0" cy="396.0" r="3.5" fill="#9aa0a6"/>
+<polyline points="670.0,160.0 765.1,79.1 820.7,67.6 860.2,81.8 915.8,67.6 955.2,60.8 1010.9,58.7 1050.3,56.7 1080.9,56.0 1136.5,56.0 1176.0,56.0" fill="none" stroke="#1f6feb" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="670.0" cy="160.0" r="3.5" fill="#1f6feb"/>
+<circle cx="765.1" cy="79.1" r="3.5" fill="#1f6feb"/>
+<circle cx="820.7" cy="67.6" r="3.5" fill="#1f6feb"/>
+<circle cx="860.2" cy="81.8" r="3.5" fill="#1f6feb"/>
+<circle cx="915.8" cy="67.6" r="3.5" fill="#1f6feb"/>
+<circle cx="955.2" cy="60.8" r="3.5" fill="#1f6feb"/>
+<circle cx="1010.9" cy="58.7" r="3.5" fill="#1f6feb"/>
+<circle cx="1050.3" cy="56.7" r="3.5" fill="#1f6feb"/>
+<circle cx="1080.9" cy="56.0" r="3.5" fill="#1f6feb"/>
+<circle cx="1136.5" cy="56.0" r="3.5" fill="#1f6feb"/>
+<circle cx="1176.0" cy="56.0" r="3.5" fill="#1f6feb"/>
+<line x1="926.0" x2="952.0" y1="326" y2="326" stroke="#9aa0a6" stroke-width="3"/>
+<text x="960.0" y="330" class="lab" fill="#9aa0a6">model only (naive)</text>
+<line x1="926.0" x2="952.0" y1="346" y2="346" stroke="#1f6feb" stroke-width="3"/>
+<text x="960.0" y="350" class="lab" fill="#1f6feb">prediction-powered (PPI)</text>
+<text x="70" y="474" class="cap">500 resamples of our own 6,220-case synthetic cohort (planted truth, Synthea COVID-19); 500 draws per point. Nothing simulated beyond the data we adjudicated.</text>
+</svg>

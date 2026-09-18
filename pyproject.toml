@@ -1,0 +1,60 @@
+[project]
+name = "auditpace"
+version = "0.1.0"
+description = "Verifiable, interpretable clinical audit pipeline"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "typer>=0.12",
+  "pydantic>=2.7",
+  "pyyaml>=6",
+  "duckdb>=1.1",
+  "pyarrow>=17",
+  "pandas>=2.2",
+  "httpx>=0.27",
+  "playwright>=1.47",
+  "pillow>=10.4",
+  "jinja2>=3.1",
+  "tesserocr==2.11.0",
+  "rapidfuzz>=3",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "python-multipart>=0.0.9",
+  "markdown>=3.6",
+  "lark>=1.0"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov", "ruff>=0.6"]
+serve = ["vllm>=0.6"]
+
+[project.scripts]
+auditpace = "auditpace.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/auditpace"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/auditpace/synth/reasons.yaml" = "auditpace/synth/reasons.yaml"
+"src/auditpace/synth/distractors.yaml" = "auditpace/synth/distractors.yaml"
+"src/auditpace/workbench/templates" = "auditpace/workbench/templates"
+"src/auditpace/report/templates" = "auditpace/report/templates"
+"src/auditpace/workbench/static" = "auditpace/workbench/static"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["slow: browser or model-backed tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+extend-ignore = ["B008"]  # typer.Argument/Option in defaults is the standard typer idiom
+
+[tool.ruff.lint.per-file-ignores]
+"src/auditpace/cli.py" = ["E402"]  # stage sub-apps import after `app = typer.Typer(...)`

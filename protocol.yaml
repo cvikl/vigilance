@@ -1,0 +1,125 @@
+protocol_id: covid_handoffs_v1
+question: "On the COVID-19 admission pathway, where do we lose time between diagnosis and treatment, and why?"
+cohort:
+  include: {condition_snomed: [840539006]}          # COVID-19
+  require_any: {encounter_class: [inpatient]}
+  period: {start: 2020-01-01, end: 2020-12-31}
+  sample: {n: 1500, seed: 42, stratify_by: [icu, died]}
+events:                                              # deterministic, from structured tables
+  suspected:     {table: conditions, code: 840544004}
+  confirmed:     {table: conditions, code: 840539006}
+  hypoxaemia:    {table: conditions, code: 389087006}
+  admitted:      {table: encounters, code: 1505002}            # Hospital admission for isolation
+  icu:           {table: encounters, code: 305351004}          # Admission to intensive care unit
+  ventilated:    {table: procedures, code: 26763009}           # Controlled ventilation
+  enoxaparin:    {table: medications, description_contains: enoxaparin}
+  discharged:    {table: encounters, code: 1505002, field: stop}
+  follow_up:     {table: encounters, class: [outpatient, ambulatory, wellness], after: discharged}
+  died:          {table: patients, field: deathdate}
+synthetic:                                           # only honoured when the data are synthetic
+  augment_times: true                                # Synthea gives dates only; draw seeded times-of-day
+  breach_rates: {H1: 0.20, H2: 0.30, H3: 0.25, H4: 0.35, H5: 0.15, H6: 0.40}
+criteria:
+  - id: H1
+    name: "Suspected to confirmed"
+    type: handoff
+    from: suspected
+    to: confirmed
+    target_hours: 24
+    standard: "NHS England COVID-19 testing turnaround, 2020"
+    reasons: [swab_delay, lab_backlog, result_not_actioned, other]
+  - id: H2
+    name: "Hypoxaemia to admission"
+    type: handoff
+    from: hypoxaemia
+    to: admitted
+    target_hours: 4
+    standard: "NICE NG191 / BTS oxygen guideline"
+    reasons: [bed_unavailable, referral_not_received, patient_declined, transport_delay, other]
+  - id: H3
+    name: "Admission to ICU escalation"
+    type: handoff
+    from: admitted
+    to: icu
+    target_hours: 12
+    applies_when: {has_event: icu}
+    standard: "NICE NG159 critical care referral"
+    reasons: [icu_full, escalation_delayed, news2_not_recorded, other]
+  - id: H4
+    name: "Admission to VTE prophylaxis"
+    type: handoff
+    from: admitted
+    to: enoxaparin
+    target_hours: 24
+    standard: "NICE NG89 VTE prophylaxis"
+    reasons: [not_prescribed, prescription_unsigned, contraindication_documented, drug_shortage, other]
+  - id: H5
+    name: "ICU to ventilation"
+    type: handoff
+    from: icu
+    to: ventilated
+    target_hours: 6
+    applies_when: {has_event: ventilated}
+    standard: "local critical care standard"
+    reasons: [ventilator_unavailable, decision_delayed, other]
+  - id: H6
+    name: "Discharge to follow-up"
+    type: handoff
+    from: discharged
+    to: follow_up
+    target_hours: 336
+    standard: "BTS post-COVID follow-up guidance"
+    reasons: [not_booked, dna, lost_to_follow_up, other]
+actions:
+  H1:
+    owner: "Microbiology lab manager / COVID testing lead"
+    reasons:
+      swab_delay:          {class: system, action: "Swab at triage; audit swab-to-lab transport times"}
+      lab_backlog:         {class: system, action: "Escalate turnaround breach to lab manager; prioritise inpatient samples"}
+      result_not_actioned: {class: system, action: "Result acknowledgement task to admitting team within 2 h"}
+      other:               {class: system, action: "Review at monthly audit meeting"}
+  H2:
+    owner: "ED clinical lead / bed manager"
+    reasons:
+      bed_unavailable:       {class: system,     action: "Escalate to site manager at 2 h; open surge beds per escalation policy"}
+      referral_not_received: {class: system,     action: "Referral confirmation call-back within 30 min"}
+      patient_declined:      {class: legitimate, action: "None — document capacity and safety-netting"}
+      transport_delay:       {class: system,     action: "Raise with ambulance trust liaison"}
+      other:                 {class: system,     action: "Review at monthly audit meeting"}
+  H3:
+    owner: "Critical care outreach lead"
+    reasons:
+      icu_full:           {class: system, action: "Surge capacity plan; escalate to critical care network"}
+      escalation_delayed: {class: system, action: "NEWS2 ≥ 7 triggers outreach review within 30 min"}
+      news2_not_recorded: {class: system, action: "Ward NEWS2 completeness audit; nursing education"}
+      other:              {class: system, action: "Review at monthly audit meeting"}
+  H4:
+    owner: "Ward pharmacist / trust VTE lead"
+    compliance_target: 0.9
+    reasons:
+      not_prescribed:              {class: system,     action: "VTE prophylaxis on admission clerking checklist; pharmacist reconciliation within 24 h"}
+      prescription_unsigned:       {class: system,     action: "Unsigned charts escalated at morning ward round"}
+      contraindication_documented: {class: legitimate, action: "None — confirm mechanical prophylaxis offered"}
+      drug_shortage:               {class: system,     action: "Pharmacy stock alert to procurement"}
+      other:                       {class: system,     action: "Review at monthly audit meeting"}
+  H5:
+    owner: "ICU clinical director"
+    reasons:
+      ventilator_unavailable: {class: system, action: "Equipment escalation; mutual aid request"}
+      decision_delayed:       {class: system, action: "Consultant review within 1 h of ICU admission"}
+      other:                  {class: system, action: "Review at monthly audit meeting"}
+  H6:
+    owner: "Respiratory clinic coordinator"
+    reasons:
+      not_booked:        {class: system,     action: "Follow-up booked before discharge letter is signed"}
+      dna:               {class: legitimate, action: "None — DNA policy: second offer by phone"}
+      lost_to_follow_up: {class: system,     action: "Discharge list reconciled weekly against clinic bookings"}
+      other:             {class: system,     action: "Review at monthly audit meeting"}
+review:
+  fraction: 1.0                                      # clinicians review everything by default
+  estimation_pool_fraction: 0.8                      # of reviews; rest may inform prompt tuning
+  confidence: 0.95
+segments: [age_band, sex, race, ethnicity, organization]
+suppress_below: 5
+locked: true
+hash: 83174236e1209a2c64284626d213ffee57c1bec681193228446d1b630d2150d7

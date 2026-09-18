@@ -1,0 +1,5 @@
+<div id="progress" class="progress" hx-swap-oob="true">
+  <div class="row"><span>reviewed {{ reviewed }} / {{ total }}</span><span class="pct">{{ ((100 * reviewed / total)|round|int) if total else 0 }}%</span></div>
+  <meter min="0" max="{{ total }}" value="{{ reviewed }}"></meter>
+  <span class="muted">estimate updates as you go</span>
+</div>

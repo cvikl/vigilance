@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0001049f-9248-47fe-b479-ea80eb51ce4a:lab_report\",\"quote\":\"Sample collected: 10:36 on 11/03/2020\"},\"to_time\":{\"doc_id\":\"0001049f-9248-47fe-b479-ea80eb51ce4a:lab_report\",\"quote\":\"Reported: 21:50 on 11/03/2020\"},\"rationale\":\"Sample collected 10:36 on 11/03/2020, result reported 21:50 on 11/03/2020: 11.25 hours, which is not greater than the 24-hour target, so not breached; the lab report gives a cause.\",\"status\":\"not_breached\",\"reason_tag\":\"lab_backlog\",\"evidence\":[{\"doc_id\":\"0001049f-9248-47fe-b479-ea80eb51ce4a:lab_report\",\"quote\":\"Sample collected: 10:36 on 11/03/2020\"},{\"doc_id\":\"0001049f-9248-47fe-b479-ea80eb51ce4a:lab_report\",\"quote\":\"Reported: 21:50 on 11/03/2020\"},{\"doc_id\":\"0001049f-9248-47fe-b479-ea80eb51ce4a:lab_report\",\"quote\":\"Comment: Detected. Clinical correlation advised. Patient noted to have hypoxemia (SpO2 <92% on air) at 06:52 on 11/03/2020 and was admitted to hospital at 12:21 on 11/03/2020 with a background of fever, cough and breathlessness.\"}],\"confidence\":0.9}",
+ "finish_reason": "stop"
+}

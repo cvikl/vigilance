@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"00051dc6-38dc-4781-a6db-b69479990236:ed_clerking\",\"quote\":\"Swab taken for SARS-CoV-2 PCR at 17:12; result returned positive, reported 18:46 on 05/03/2020\"},\"to_time\":{\"doc_id\":\"00051dc6-38dc-4781-a6db-b69479990236:lab_report\",\"quote\":\"Reported: 18:46 on 05/03/2020\"},\"rationale\":\"Swab taken 17:12 on 05/03/2020, result reported 18:46 on 05/03/2020: 1.08 hours, which is not greater than the 24-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

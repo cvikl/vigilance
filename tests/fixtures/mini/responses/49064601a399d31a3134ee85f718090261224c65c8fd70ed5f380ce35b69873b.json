@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:ed_clerking\",\"quote\":\"Admitted to hospital at 00:11 on 06/03/2020\"},\"to_time\":{\"doc_id\":\"00393b70-eb5e-4075-9348-cabfbc8ce514:icu_note\",\"quote\":\"transferred to the intensive care unit at 09:09 on 06/03/2020\"},\"rationale\":\"Admitted 00:11 on 06/03/2020, transferred to ICU 09:09 on 06/03/2020: 8.88 hours, which is not greater than the 12-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

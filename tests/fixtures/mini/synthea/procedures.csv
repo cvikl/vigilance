@@ -1,0 +1,168 @@
+DATE,PATIENT,ENCOUNTER,CODE,DESCRIPTION,BASE_COST,REASONCODE,REASONDESCRIPTION
+2020-03-05,00051dc6-38dc-4781-a6db-b69479990236,89ed5ed3-353e-4cde-b43e-bee4f1194666,261352009,Face mask (physical object),516.65,840544004,Suspected COVID-19
+2020-03-05,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,399208008,Plain chest X-ray (procedure),7168.72,,
+2020-03-05,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-05,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-16,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-16,00051dc6-38dc-4781-a6db-b69479990236,dee705cb-65fc-49ca-a63f-4a6040516808,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-02-07,00393b70-eb5e-4075-9348-cabfbc8ce514,7f194ac7-2035-4882-b135-1988748304ba,430193006,Medication Reconciliation (procedure),821.66,,
+2020-03-05,00393b70-eb5e-4075-9348-cabfbc8ce514,9b1c7e89-cc85-4646-9159-bf7f791ab145,261352009,Face mask (physical object),516.65,840544004,Suspected COVID-19
+2020-03-05,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,399208008,Plain chest X-ray (procedure),10703.62,,
+2020-03-05,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-05,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,00393b70-eb5e-4075-9348-cabfbc8ce514,61b80138-b02f-498f-a9f5-2bc6e9dbb326,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-16,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-17,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-18,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-19,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-20,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-21,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,61594008,Microbial culture (procedure),516.65,,
+2020-03-21,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-22,00393b70-eb5e-4075-9348-cabfbc8ce514,8bb1284c-0a44-486e-9215-4082150f04ce,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2019-07-23,0001049f-9248-47fe-b479-ea80eb51ce4a,7d69d797-7aa7-4085-b02a-31cd4c99f8ba,76601001,Intramuscular injection,2193.17,,
+2019-10-22,0001049f-9248-47fe-b479-ea80eb51ce4a,1b7fc5eb-f387-48d3-8926-f712a59c43ce,76601001,Intramuscular injection,1783.83,,
+2019-12-25,0001049f-9248-47fe-b479-ea80eb51ce4a,da4f2e91-f7ee-4b1f-9040-7b71e5a6cc24,73761001,Colonoscopy,7696.34,,
+2020-01-21,0001049f-9248-47fe-b479-ea80eb51ce4a,9e07b49a-2e7d-4e56-a70e-0bcbf14e7682,76601001,Intramuscular injection,3294.46,,
+2020-02-04,0001049f-9248-47fe-b479-ea80eb51ce4a,e9c44600-50f2-4d3b-96aa-e95346f828df,430193006,Medication Reconciliation (procedure),364.34,,
+2020-03-11,0001049f-9248-47fe-b479-ea80eb51ce4a,25d1322a-71ca-4909-a15f-1e78f08339ad,261352009,Face mask (physical object),516.65,840544004,Suspected COVID-19
+2020-03-11,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,399208008,Plain chest X-ray (procedure),6158.54,,
+2020-03-11,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-16,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-16,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-17,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-17,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-18,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-18,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-19,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-19,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-20,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-20,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-21,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-21,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-22,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-22,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-23,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-23,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-24,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-24,0001049f-9248-47fe-b479-ea80eb51ce4a,21b22928-d96b-4fa8-a7dc-d39146f1ed49,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-04-21,0001049f-9248-47fe-b479-ea80eb51ce4a,0dfc5ee2-7349-46ac-9f82-f3c3aebf64c7,76601001,Intramuscular injection,3229.23,,
+2019-07-19,0007ad27-973e-4cd5-8d46-b636c85bfa84,d2c39029-1727-45bd-841f-dcf942f5efa2,76601001,Intramuscular injection,1665.08,,
+2019-10-18,0007ad27-973e-4cd5-8d46-b636c85bfa84,456ad8ee-3924-42a3-b1fc-133748f4127b,76601001,Intramuscular injection,4519.55,,
+2020-01-17,0007ad27-973e-4cd5-8d46-b636c85bfa84,b84fdbe0-09b8-40f9-9271-bb04c6264f1a,76601001,Intramuscular injection,2845.37,,
+2020-03-04,0007ad27-973e-4cd5-8d46-b636c85bfa84,7e65c86e-a83a-4e0c-9422-974c45a64e33,261352009,Face mask (physical object),516.65,840544004,Suspected COVID-19
+2020-03-04,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,399208008,Plain chest X-ray (procedure),10698.36,,
+2020-03-04,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-04,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-05,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-05,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-06,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0007ad27-973e-4cd5-8d46-b636c85bfa84,d067e078-4562-4eee-ab0c-122f6644a282,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-04-17,0007ad27-973e-4cd5-8d46-b636c85bfa84,62e7182f-47f0-4de4-b8d2-8a2caa939f2a,76601001,Intramuscular injection,2826.44,,
+2019-08-09,0042fd95-cb1b-4fc2-8235-b44c11b095b2,401ee53a-a21a-419d-a7bf-1d5ab3fde22d,430193006,Medication Reconciliation (procedure),533.58,,
+2019-09-27,0042fd95-cb1b-4fc2-8235-b44c11b095b2,4430dbea-410b-41b7-b3a3-49b97e4f680d,430193006,Medication Reconciliation (procedure),806.94,,
+2019-11-29,0042fd95-cb1b-4fc2-8235-b44c11b095b2,cd5770d4-71f5-48ea-b858-f81693143a83,430193006,Medication Reconciliation (procedure),754.91,,
+2019-12-27,0042fd95-cb1b-4fc2-8235-b44c11b095b2,eb60ecf9-a9d6-4726-930e-cf4968565ec3,430193006,Medication Reconciliation (procedure),706.95,,
+2020-03-07,0042fd95-cb1b-4fc2-8235-b44c11b095b2,ac1c3f22-39a5-471e-b747-2d97ab13b06a,261352009,Face mask (physical object),516.65,840544004,Suspected COVID-19
+2020-03-07,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,399208008,Plain chest X-ray (procedure),5413.2,,
+2020-03-07,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-07,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-08,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-09,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-10,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-11,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-12,0042fd95-cb1b-4fc2-8235-b44c11b095b2,792ea1c1-88db-4c03-b9b5-d131dab901b3,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-13,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-14,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,371908008,Oxygen administration by mask (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,5a9f694c-417f-42d3-a2c0-95e3bb38136e,431182000,Placing subject in prone position (procedure),516.65,389087006,Hypoxemia (disorder)
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,112798008,Insertion of endotracheal tube (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,399208008,Plain chest X-ray (procedure),7665.06,,
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-15,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-16,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-16,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-17,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-17,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-18,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-18,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-19,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-19,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-20,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,430193006,Medication Reconciliation (procedure),527.4,,
+2020-03-20,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-20,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-21,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-21,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,
+2020-03-22,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,26763009,Controlled ventilation procedure and therapy  initiation and management (procedure),516.65,65710008,Acute respiratory failure (disorder)
+2020-03-22,0042fd95-cb1b-4fc2-8235-b44c11b095b2,20c1d9d2-aeaa-489e-b635-955bfa16fb8d,302497006,Hemodialysis (procedure),516.65,,

@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"00051dc6-38dc-4781-a6db-b69479990236:ed_clerking\",\"quote\":\"Admitted to hospital at 20:22 on 05/03/2020\"},\"to_time\":{\"doc_id\":\"00051dc6-38dc-4781-a6db-b69479990236:lab_report\",\"quote\":\"Enoxaparin thromboprophylaxis commenced 22:25 on 05/03/2020\"},\"rationale\":\"Admitted 20:22 on 05/03/2020, first dose 22:25 on 05/03/2020: 2.25 hours, which is not greater than the 24-hour target, so not breached.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0007ad27-973e-4cd5-8d46-b636c85bfa84:ed_clerking\",\"quote\":\"SpO2 91% on air recorded at 10:06 on 04/03/2020 at first attendance.\"}, \"to_time\":{\"doc_id\":\"0007ad27-973e-4cd5-8d46-b636c85bfa84:discharge_summary\",\"quote\":\"Admission date/time: 17:13 on 04/03/2020\"}, \"rationale\":\"Hypoxaemia recorded 10:06 on 04/03/2020, admitted 17:13 on 04/03/2020: 7.25 hours, which is not greater than the 4-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

@@ -1,0 +1,43 @@
+/* Behaviour styles for the interactive queue (chips, row focus, arrivals). Visual polish lives in
+   workbench.css, which may override anything here. */
+.filterbar { position: sticky; top: 0; z-index: 5; background: #fafbfc; padding: .5rem 0 .25rem; }
+.chips { display: flex; gap: .4rem; flex-wrap: wrap; margin: .25rem 0 .5rem; }
+.chips .view { border: 1px solid var(--line); background: #fff; border-radius: 1rem; padding: .25rem .8rem; cursor: pointer; font: inherit; }
+.chips .view.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chips .view .n { opacity: .7; font-size: .85em; margin-left: .2rem; }
+.queue-meta { display: flex; justify-content: space-between; margin-bottom: .35rem; }
+table.queue thead th { position: sticky; top: 5.4rem; background: #fff; z-index: 4; }
+tr.row { cursor: pointer; }
+tr.row:hover td { background: #f1f5f9; }
+tr.row.focus td { background: #e8f0fe; box-shadow: inset 3px 0 0 var(--leg); }
+tr.row.done td { color: var(--muted); }
+tr.row.done .tick { color: var(--ok); font-weight: 700; }
+tr.row.new td { background: #fff7d6; }
+tr.row.landed { animation: land 5s ease-out; }
+@keyframes land { 0% { transform: translateY(-.6rem); opacity: 0; } 15% { transform: none; opacity: 1; background: #ffe58a; } 100% { background: transparent; } }
+tr.row.landed td { animation: landcell 5s ease-out; }
+@keyframes landcell { 0%, 15% { background: #ffe58a; } 100% { background: #fff7d6; } }
+.badge.new { color: #8a6d00; border-color: #e6a700; background: #fff3c4; }
+td.hours .over { color: var(--sys); font-size: .85em; }
+tr.more td { text-align: center; }
+tr.more button { border: 1px solid var(--line); background: #fff; padding: .3rem .8rem; cursor: pointer; font: inherit; }
+.owner { border-left: 3px solid var(--ink); padding: .4rem .75rem; margin: .5rem 0 .75rem; background: #fff; }
+.owner b { display: inline-block; min-width: 6.5rem; color: var(--muted); font-weight: 500; }
+.brand .name b { font-weight: 800; letter-spacing: .02em; }
+.brand .mark { display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -.15em; margin-right: .3em; }
+#demo-held { margin-top: .3rem; }
+
+/* results tab */
+.legend { color: var(--muted); font-size: .9em; margin: .3rem 0; }
+.legend .sw { display: inline-block; width: .8em; height: .8em; vertical-align: -.05em; margin: 0 .2em 0 .8em; }
+.legend .sw.s { background: var(--sys); } .legend .sw.l { background: var(--leg); } .legend .sw.u { background: var(--und); } .legend .sw.w { background: #eee; border: 1px solid var(--line); }
+.charts { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.charts figure { margin: 0; max-width: 540px; }
+.charts figcaption { font-size: .85em; margin-top: .2rem; }
+.card.alert.alarm_high { border-left: 4px solid var(--sys); } .card.alert.alert_high { border-left: 4px solid var(--warn); }
+.card.alert.alert_low, .card.alert.alarm_low { border-left: 4px solid var(--ok); } .card.alert.below_target { border-left: 4px solid var(--und); }
+.alert-title { margin: 0 0 .25rem; } .alert-where { margin: 0 0 .25rem; } .alert-why { color: var(--muted); font-size: .92em; margin: 0 0 .4rem; }
+table.timelost tr.rank1 td, table.timelost tr.alerted td { background: #fff3f1; }
+.jump { position: sticky; top: 0; background: #fafbfc; padding: .4rem 0; z-index: 5; color: var(--muted); }
+.jump a { margin: 0 .1rem; }
+section.crit { scroll-margin-top: 2.5rem; } #alerts, #timelost { scroll-margin-top: 2.5rem; }

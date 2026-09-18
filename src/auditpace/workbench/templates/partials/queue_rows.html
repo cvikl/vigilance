@@ -1,0 +1,20 @@
+{% for r in rows %}
+<tr class="row {{ r.category }}{% if r.review_state %} done{% endif %}{% if r.is_new %} new{% endif %}" data-case="{{ r.case_id }}"
+    data-href="{{ ('/case/' ~ r.case_id)|demo_href(demo) }}" tabindex="0">
+  <td class="pri">{% if r.review_state %}<span class="tick" title="reviewed: {{ r.review_state }}">✓</span>{% elif r.is_new %}<span class="badge new">just landed</span>{% else %}<span class="num" title="review priority">{{ r.priority|int if r.priority is not none and r.priority == r.priority else '—' }}</span>{% endif %}</td>
+  <td class="who">
+    <div class="pid">{{ r.patient_id[:8] }} <span class="muted">· {{ r.age_band }} · {{ r.sex }}</span></div>
+    <div class="why reason" data-demo="C4"{% if r.priority_reason %} title="{{ r.priority_reason }}"{% endif %}><a href="{{ ('/case/' ~ r.case_id)|demo_href(demo) }}">{% if r.review_state %}reviewed: {{ r.review_state }}{% elif r.priority_reason %}{% if r.is_new %}<span class="lead landed">just landed · </span>{% endif %}{% set flags = r.priority_reason|why_flags|rejectattr("kind", "equalto", "over")|list %}{% for f in flags %}<span class="{{ 'lead' if loop.first else 'flag' }}">{{ f.text }}</span>{% endfor %}{% else %}no flags fired — check in any order{% endif %}</a></div>
+  </td>
+  <td class="hand">{{ r.criterion_id }}</td>
+  <td class="hours">{{ r.hours|hours_short }} <span class="tgt">/ {{ r.target_hours|hours_short }}</span>{% if r.excess_hours and r.excess_hours > 0 %} <span class="over">+{{ r.excess_hours|hours_short }}</span>{% endif %}</td>
+  <td class="st"><span class="chip {{ r.category }}">{{ r.category|category_label(r.criterion_id) }}</span>{% if r.any_unverified %} <span class="badge unverified" title="quote not found on page">evidence not verified</span>{% endif %}</td>
+  <td class="rsn">{{ r.reason_tag|reason_label }}{% if r.model_status and r.model_status != r.status %} <span class="badge warn" title="the model's own call; the computed status is used">model said {{ r.model_status|replace('_', ' ') }}</span>{% endif %}</td>
+</tr>
+{% endfor %}
+{% if has_more %}
+<tr class="more"><td colspan="6">
+  <button type="button" hx-get="/queue" hx-include="#queue-filters" hx-vals='{"offset": {{ next_offset }}, "part": "rows"}'
+          hx-target="closest tr" hx-swap="outerHTML">show more — {{ next_offset }} of {{ n_all }} shown</button>
+</td></tr>
+{% endif %}

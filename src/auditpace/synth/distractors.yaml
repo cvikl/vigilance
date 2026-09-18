@@ -1,0 +1,26 @@
+# Mentions of a delay that was considered or resolved without breaching the criterion (S2 design §6).
+# Planted only on non-breached cases so the adjudicator must read the timings, not the keywords.
+H1:
+  - "Initial swab attempt delayed briefly while the swabbing kit was fetched; sample sent the same morning."
+  - "Laboratory warned of a possible backlog but the result was reported within the day."
+  - "Result acknowledged and documented promptly by the night SHO."
+H2:
+  - "Bed initially unavailable on AMU; a side room was found and the patient transferred within the hour."
+  - "Medical referral initially sent to the wrong team but redirected within minutes."
+  - "Patient hesitant about admission but agreed promptly after the risks were explained."
+H3:
+  - "ICU capacity was tight but a bed was accepted without delay."
+  - "Outreach team reviewed promptly after the NEWS2 trigger; transferred to ICU the same evening."
+  - "Escalation discussed with the family and agreed without delay."
+H4:
+  - "Enoxaparin briefly unavailable on the ward but obtained from the adjacent ward for the first dose."
+  - "Pharmacist confirmed the prescription was signed and the first dose was given on time."
+  - "Platelet count checked before prophylaxis and found to be normal; first dose given on schedule."
+H5:
+  - "Ventilator availability confirmed before the decision to intubate; no delay."
+  - "Ceiling of care discussed with the family earlier in the admission, so intubation proceeded promptly."
+  - "Trial of CPAP was brief and intubation proceeded as planned."
+H6:
+  - "Clinic appointment booked before discharge; patient attended as arranged."
+  - "Patient initially unsure they could attend but confirmed the appointment by telephone."
+  - "Referral sent to the post-COVID clinic on the day of discharge."

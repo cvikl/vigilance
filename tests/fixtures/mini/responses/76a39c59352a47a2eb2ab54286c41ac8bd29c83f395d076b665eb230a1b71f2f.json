@@ -1,0 +1,5 @@
+{
+ "model": "google/medgemma-27b-text-it",
+ "content": "{\"from_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:ed_clerking\",\"quote\":\"Admitted to hospital at 22:09 on 07/03/2020\"},\"to_time\":{\"doc_id\":\"0042fd95-cb1b-4fc2-8235-b44c11b095b2:ed_clerking\",\"quote\":\"enoxaparin first dose given 23:15 on 07/03/2020\"},\"rationale\":\"Admitted 22:09 on 07/03/2020, first dose 23:15 on 07/03/2020: 1.25 hours, which is not greater than the 24-hour target, so not_breached; no cause of delay is described.\",\"status\":\"not_breached\",\"reason_tag\":null,\"evidence\":[],\"confidence\":1.0}",
+ "finish_reason": "stop"
+}

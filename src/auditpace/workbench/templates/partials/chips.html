@@ -1,0 +1,6 @@
+<div class="chips" id="chips" role="tablist" aria-label="views" hx-swap-oob="true">
+  {% for key, label, f in chips %}
+  <button type="button" class="view {{ 'on' if chip == key }}" data-category="{{ f.category }}" data-sort="{{ f.sort }}"
+          {% if key in ['stalled', 'legit'] %}data-demo="C2"{% elif key in ['check', 'longest'] %}data-demo="C4"{% endif %}>{{ label }}{% if key not in ['longest', 'latest'] %} <span class="n">{{ counts[key] }}</span>{% endif %}</button>
+  {% endfor %}
+</div>

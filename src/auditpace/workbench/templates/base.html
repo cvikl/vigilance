@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vigilance — {% block title %}workbench{% endblock %}</title>
+<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/interact.css">
+<link rel="stylesheet" href="/static/workbench.css">
+<script src="/static/htmx.min.js"></script>
+<script>
+// htmx only swaps 2xx/3xx by default; a 422 from POST /reviews carries the re-rendered form with its
+// validation message, which must reach the panel (spec §4). htmx events bubble, so listening on
+// `document` from <head> works before <body> exists.
+document.addEventListener('htmx:beforeSwap', function(e){
+  if (e.detail.xhr && e.detail.xhr.status === 422) e.detail.shouldSwap = true;
+});
+</script>
+</head>
+<body>
+<div class="shell">
+<header class="top rail">
+  <div class="brand">{% include "partials/logo.svg" %}</div>
+  <nav>
+    <a href="{{ '/queue'|demo_href(demo) }}" class="{{ 'on' if nav_path.startswith('/queue') or nav_path.startswith('/case') }}">Review queue</a>
+    <a href="{{ '/results'|demo_href(demo) }}" class="{{ 'on' if nav_path.startswith('/results') }}">Results &amp; alerts</a>
+    <a href="{{ '/report'|demo_href(demo) }}" class="{{ 'on' if nav_path.startswith('/report') }}">Audit report</a>
+  </nav>
+  <div class="rail-foot">
+    {% if not demo %}
+    <section class="audit-card" aria-label="current audit">
+      <div class="k">Audit</div>
+      <div class="v">{{ protocol.protocol_id|replace('_', ' ') }}</div>
+      <div class="m">{{ protocol.criteria|length }} handoffs · locked {{ protocol.hash[:8] }}</div>
+    </section>
+    {% include "partials/progress.html" %}
+    {% endif %}
+    <details class="account">
+      <summary><span class="avatar" aria-hidden="true">{{ (reviewer or 'c')[:2]|upper }}</span><span class="label">Account</span><span class="m">{{ reviewer }}</span></summary>
+      <div class="body">
+        <label>Reviewer name <input id="reviewer" name="reviewer" value="{{ reviewer }}" size="12"
+          onchange="document.cookie='reviewer='+encodeURIComponent(this.value)+';path=/'"></label>
+        <div class="m">Audit clinician · Eastbrook University Hospitals</div>
+      </div>
+    </details>
+  </div>
+</header>
+<div class="content">
+{% include "partials/banner.html" %}
+<main>
+{% block content %}{% endblock %}
+</main>
+</div>
+</div>
+{% if demo %}
+<div id="demo-dock">
+  <button type="button" id="demo-toggle" aria-expanded="false" aria-controls="demo-panel">Pitch assistant</button>
+  <div id="demo-sheet">
+  <section class="audit-card" aria-label="current audit">
+      <div class="k">Audit</div>
+      <div class="v">{{ protocol.protocol_id|replace('_', ' ') }}</div>
+      <div class="m">{{ protocol.criteria|length }} handoffs · locked {{ protocol.hash[:8] }}</div>
+    </section>
+  {% include "partials/progress.html" %}
+  {% include "partials/demo_panel.html" %}
+  </div>
+</div>
+<script>
+(function(){var d=document.getElementById('demo-dock'),b=document.getElementById('demo-toggle');
+b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+</script>
+<script src="/static/demo.js"></script>{% endif %}
+</body>
+</html>

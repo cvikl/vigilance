@@ -1,0 +1,3 @@
+# Clinicians review every case by default; PPI is the fallback, not the product
+
+The tool exists to make full clinician review fast (one formalised row per case, one click to the source), not to replace review with a model. Review fraction defaults to 1.0, and the estimator equals the classical clinician-only estimate at that setting. Prediction-powered inference is used only when clinicians cannot review everything (pandemic, no staff), so the reported interval stays valid instead of silently inheriting model error. Alternative rejected: model-labels-everything with a one-off validation, which scales but lets model error into the headline figure.
