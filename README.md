@@ -71,7 +71,7 @@ Synthetic only. Cohort: 1,500 inpatient COVID-19 patients from the Synthea COVID
 
 ## Team
 
-David Shah · Timotej Cvikl · with Google MedGemma.
+Davod Shah · Timotej Cvikl · with Google MedGemma.
 
 ## Licence
 
