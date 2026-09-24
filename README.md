@@ -4,8 +4,6 @@
 
 Built in one day at the Adeline Sprint Sessions Health x AI Hackathon (Google HQ London, 18 September 2026), Track 2 — *Pathway Breakdown: closing the gaps at care handoffs* (AlbionVC). Uses Google's Health AI Developer Foundations models: **MedGemma 4B** (vision) reads the pages, **MedGemma 27B** adjudicates and writes the report prose.
 
-Live demo: https://vigilance.legislabs.uk/home · Workbench: https://vigilance.legislabs.uk/queue
-
 ## The problem
 
 Clinical audit is how the NHS finds where a pathway loses time. It is statutory, it works (Cochrane: +6.2 points of practice change across 292 trials), and it stops the moment a ward gets busy — because the data collection is a clinician reading notes by hand: 8 min 35 s per discharge summary, 28 hours per audit project, mostly unpaid. In March 2020, when the pathways were breaking fastest, national audit was switched off by letter.
